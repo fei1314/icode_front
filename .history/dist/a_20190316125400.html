@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>JavaScript版数据结构与算法-章节试看</title> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta property="qc:admins" content="77103107776157736375" /> 
+  <meta property="wb:webmaster" content="c4f857219bfae3cb" /> 
+  <meta http-equiv="Access-Control-Allow-Origin" content="*" /> 
+  <meta http-equiv="Cache-Control" content="no-transform " /> 
+  <meta http-equiv="Cache-Control" content="no-siteapp" /> 
+  <meta name="keywords" content="JavaScript数据结构章节，JavaScript算法试看" />
+  <link rel="stylesheet" href="css/animate.css" /> 
+  <link rel="stylesheet" href="css/icomoon.css" /> 
+  <link rel="stylesheet" href="css/bootstrap.css" /> 
+  <link rel="stylesheet" href="css/style.css" /> 
+  <script src="js/modernizr-2.6.2.min.js"></script>  
+  <meta name="description" content="本次课程讲师7年工作经验的资深前端工程师，主要从事Web视频领域的底层开发，通过本次课程将带领大家学习基础算法之“字符串类”、基础算法之“数组类”基础算法之“正则类”等相关知识" /> 
+  <link rel="stylesheet" href="//www.imooc.com/static/moco/v1.0/dist/css/moco.min.css?v=201903151440" type="text/css" /> 
+  <style type="text/css">
+    .moco-modal-info {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    </style> 
+  <!-- <script type="text/javascript">
+    
+    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('!4(){3 b={};3 d=0;3 5=[{c:\'//k.p.h/k/m/K/L.q\',6:0},{c:\'//m.p.h/I/J-O.q\',6:0}];3 u=4(){3 j,n=e P("(^| )"+"l=([^;]*)(;|$)");9(j=r.s.M(n)){o N(j[2])}D{o C}};3 A=4(t){3 B=u();3 8=e H();8.G(8.F()+E*v*v*10);r.s="l="+t+";13="+8.14()+";15=/;T=U.h";9(t&&t!=B){R.Y.Z()}};3 x=4(i){3 7=e X();7.V=4(){W(b[i]);b[i]=C;a(i,0)};7.Q=4(){a(i,1)};b[i]=S(4(){7.z="";a(i,1)},11);7.z=5[i].c+"?t="+12.16()};3 a=4(y,6){d++;5[y].6=6;9(d==5.f){3 g=0;w(3 i=0;i<5.f;i++){9(5[i].6==1){g=1}}A(g)}};w(3 i=0;i<5.f;i++){x(i)}}()',62,69,'|||var|function|urls|flag|imgobj|exp|if|callback|timer|url|count|new|length|error|com||arr|static|IMCDNS|img|reg|return|mukewang|png|document|cookie||getcookie|60|for|checkCdn|index|src|setcookie|_0|null|else|24|getTime|setTime|Date|images|unknow|common|logo|match|unescape|80|RegExp|onerror|window|setTimeout|domain|imooc|onload|clearTimeout|Image|location|reload|1000|3000|Math|expires|toGMTString|path|random'.split('|'),0,{}))
+    
+    </script> 
+  <script type="text/javascript">
+      (function() {
+        window.zhuge = window.zhuge || [];
+        window.zhuge.methods = "_init identify track getDid getSid getKey setSuperProperty setUserProperties setWxProperties setPlatform".split(" ");
+        window.zhuge.factory = function(b) {
+          return function() {
+            var a = Array.prototype.slice.call(arguments);
+            a.unshift(b);
+            window.zhuge.push(a);
+            return window.zhuge;
+          }
+        };
+        for (var i = 0; i < window.zhuge.methods.length; i++) {
+          var key = window.zhuge.methods[i];
+          window.zhuge[key] = window.zhuge.factory(key);
+        }
+        window.zhuge.load = function(b, x) {
+          if (!document.getElementById("zhuge-js")) {
+            var a = document.createElement("script");
+            var verDate = new Date();
+            var verStr = verDate.getFullYear().toString() + verDate.getMonth().toString() + verDate.getDate().toString();
+
+            a.type = "text/javascript";
+            a.id = "zhuge-js";
+            a.async = !0;
+            a.src = (location.protocol == 'http:' ? "http://sdk.zhugeio.com/zhuge.min.js?v=": 'https://zgsdk.zhugeio.com/zhuge.min.js?v=') + verStr;
+            a.onerror = function() {
+              window.zhuge.identify = window.zhuge.track = function(ename, props, callback) {
+                if(callback && Object.prototype.toString.call(callback) === '[object Function]') {
+                  callback();
+                } else if (Object.prototype.toString.call(props) === '[object Function]') {
+                  props();
+                }
+              };
+            };
+            var c = document.getElementsByTagName("script")[0];
+            c.parentNode.insertBefore(a, c);
+            window.zhuge._init(b, x)
+          }
+        };
+        window.zhuge.load('f375fe2f71e542a4b890d9a620f9fb32', { //配置应用的AppKey
+          superProperty: { //全局的事件属性(选填)
+            '应用名称': '实战数据统计',
+            'Platform': 'web'
+          },
+          adTrack: true,//广告监测开关，默认为false
+          visualizer: true, //可视化埋点开关
+          autoTrack: false,
+          //启用全埋点采集（选填，默认false）
+          singlePage: false //是否是单页面应用（SPA），启用autoTrack后生效（选填，默认false）
+        });
+      })();
+    </script> 
+  <script type="text/javascript">
+        var OP_CONFIG={"module":"class","page":"chapter","userout":0,"usercaution":""};
+        OP_CONFIG.isLogin = 0;
+        var isLogin = 0;
+        var _msg_unread = 0; 
+        var _not_unread = 0; 
+        var _cartFlag = 0;
+        var seajsTimestamp="v=201903151440";
+            </script>  -->
+  <link rel="stylesheet" href="//coding.imooc.com/static/module/??common/css/common-less.css,course/css/course-less.css,course/css/precon-less.css,class/common/css/index-less.css?v=1552547481" type="text/css" /> 
+ </head> 
+ <body> 
+  <!--顶部广告位--> 
+  <div class="adv-root" id="moco-top-advertising"></div> 
+  <!-- <div id="header"> 
+   <div class="page-container new-header" id="nav"> 
+    <ul class="nav-item"> 
+     <li><a href="//www.imooc.com" target="_self" class="imooc">慕课网首页</a></li> 
+     <li><a href="//www.imooc.com/course/list" target="_self">免费课程</a></li> 
+     <li><a href="/" class="active" target="_self">实战课程</a></li> 
+     <li><a href="//class.imooc.com" target="_self">就业班</a></li> 
+     <li><a href="//www.imooc.com/read" target="_self">专栏<i class="icn-new"></i></a></li> 
+     <li><a href="//www.imooc.com/wenda" target="_self">猿问</a></li> 
+     <li><a href="//www.imooc.com/article" target="_self">手记</a></li> 
+     <li class="search" id="common-nav-search"> <a href="javascript:void(0);"> <i class="imv2-search"></i> </a> </li> 
+     <li class="input-search hide" id="common-input-search"> 
+      <div class="input-box"> 
+       <input type="text" class="nav-search-input" autocomplete="off" /> 
+       <a href="javascript:void(0);" class="nav-searchBtn js-nav-searchBtn"> <i class="imv2-search"></i> </a> 
+      </div> 
+      <div class="nav-search-box hide"> 
+       <div class="hot"> 
+        <h2>热搜</h2> 
+        <div class="hot-box"> 
+        </div> 
+       </div> 
+       <div class="history hide"> 
+        <h2>最近搜索<a href="javascript:void(0);" class="history-clear js-clear-history">清空</a></h2> 
+        <div class="history-box"> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="nav-correlate-box hide"> 
+       <div class="correlate"> 
+       </div> 
+      </div> </li> 
+    </ul> 
+    <div class="header-right clearfix"> 
+     <div class="dist-money"> 
+      <a href="//order.imooc.com/pay/sharegoods" target="_blank">
+       <div class="redPacket"></div>分享赚学费</a> 
+     </div> 
+     <div class="app-download" id="js-app-load"> 
+      <a href="//www.imooc.com/mobile/app" target="_blank">下载APP</a> 
+      <div class="app-load-box clearfix js-load-box"> 
+       <div class="browser-load-box"> 
+        <h4>慕课网浏览器 - PC客户端</h4> 
+        <a class="app-load-btn" href="//www.imooc.com/mobile/app" target="_blank"><i class="imv2-windows"></i>Windows版</a> 
+        <span class="browser-load-mac">Mac版开发中，敬请期待…</span> 
+       </div> 
+       <div class="mobile-load-box"> 
+        <h4>慕课网APP - 随时随地学编程</h4> 
+        <img src="//www.imooc.com/static/img/common/appload.png" class="l" /> 
+        <div class="r"> 
+         <a class="app-load-btn" href="https://itunes.apple.com/cn/app/mu-ke-wang/id722179140?mt=8" target="_blank"><i class="icon-apple"></i>App Store下载</a> 
+         <a class="app-load-btn" href="//www.imooc.com/mobile/appdown" target="_blank"><i class="icon-android"></i>Android下载</a> 
+         <p>扫描下载慕课网APP</p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="shop-cart" id="shop-cart"> 
+      <a href="//order.imooc.com/pay/cart" class="shop-cart-icon" target="_blank"> <span class="imv2-cart js-endcart"></span><span>购物车</span><span class="shopping_icon js-cart-num" data-ordernum="0" data-cartnum="0" data-prevnum="0" style="display: none">0</span> </a> 
+      <div class="my-cart" id="js-my-cart"></div> 
+     </div> 
+     <div id="login-area"> 
+      <ul class="header-unlogin clearfix"> 
+       <li class="header-signin"> <a href="//www.imooc.com/user/newlogin" id="js-signin-btn">登录</a> / <a href="//www.imooc.com/user/newsignup" id="js-signup-btn">注册</a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </div>  -->
+  <nav class="fh5co-nav" role="navigation"> 
+        <div class="container"> 
+         <div class="row"> 
+          <div class="col-xs-3"> 
+           <div id="fh5co-logo">
+            <a href="index.html">One to One</a>
+           </div> 
+          </div> 
+          <div class="col-xs-9 text-right menu-1"> 
+           <ul> 
+            <li class="active"><a href="index.html">首页</a></li> 
+            <li><a href="work.html">课程体系</a></li> 
+            <li> <a href="services.html">活动</a> 
+             </li> 
+             <li><a href="about.html">关于我们</a></li> 
+            <li><a href="contact.html">联系我们</a></li> 
+            <li class="btn-cta"><a href="#"><span>登录</span></a></li> 
+           </ul> 
+          </div> 
+         </div> 
+        </div> 
+       </nav> 
+       <!-- <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_2.jpg);">  -->
+  <div class="course-infos-top " style="background-image:url(images/img_bg_2.jpg);"> 
+   <div class="info-wrap"> 
+    <!-- <div class="path"> 
+     <a href="//www.imooc.com"> <i class="imv2-imooc"></i> </a> 
+     <i class="split">/</i> 
+     <a href="/">实战</a> 
+     <i class="split">/</i> 
+     <span>JavaScript版 数据结构与算法</span> 
+    </div> 
+    <div class="extra"> 
+     <div class="course-collect clearfix js-course-collect l" data-type="0" data-cid="315"> 
+      <i class="imv2-star j"></i>
+      <span>收藏</span> 
+     </div> 
+     <div class="share-action l bdsharebuttonbox bdshare-button-style0-16 " data-bd-bind="1439263858135"> 
+      <div class="share-money js-share-present" data-id="315" data-type="1" data-name="JavaScript版 数据结构与算法">
+       分享赚 &yen; 26.60
+      </div> 
+     </div> 
+    </div>  -->
+    <div class="title-box" style="margin-top:20px"> 
+     <h1>JavaScript版 数据结构与算法</h1> 
+     <h2>夯实算法基础，填补技术短板，助力面试考题最后一公里</h2> 
+    </div> 
+    <div class="hide"> 
+     <h1 class="l">JavaScript版 数据结构与算法</h1> 
+    </div> 
+   </div> 
+   <div class="fixed-wrap" style="bottom:-64px"> 
+    <div class="con"> 
+     <!-- 只在未购买和已购买正常转状态显示 --> 
+     <div class="time-price clearfix"> 
+      <div class="no-discount clearfix l"> 
+       <!-- 没有任何活动 --> 
+       <div class="ori-price l">
+         ￥266.00 
+       </div> 
+      </div> 
+      <div class="can-huabei l"> 
+       <a href="//www.imooc.com/help/detail/110" target="_blank">花呗付款</a> 
+      </div> 
+     </div> 
+     <div class="info-bar clearfix" style="margin-top:px"> 
+      <span>难度</span> 
+      <span class="nodistance">中级</span> 
+      <i class="imv2-dot_samll"></i> 
+      <span>时长</span> 
+      <span class="nodistance">14小时</span> 
+      <i class="imv2-dot_samll"></i> 
+      <span>学习人数</span> 
+      <span class="nodistance">981</span> 
+      <i class="imv2-dot_samll"></i> 
+      <span>综合评分</span> 
+      <span class="nodistance">9.88分</span> 
+      <i class="imv2-dot_samll"></i> 
+      <a href="/class/log/315.html#Log" target="_blank"><span>更新时间</span> <span class="nodistance last">5天前</span></a> 
+     </div> 
+     <div class="btns"> 
+      <a href="javascript:;" class="js-buy-trigger red-btn gobuy" data-cid="315" data-pay="0" id="buy-trigger"> 立即购买 </a> 
+      <a href="javascript:;" class="js-addcart addcart" data-cid="315" data-type="1"> 加购物车 </a> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="course-infos-t "> 
+   <div id="Anchor"></div> 
+   <div class="comp-tab-t js-comp-tab"> 
+    <ul class="clearfix"> 
+     <li class="comp-tab-item-first comp-tab-item  "> <a href="/class/315.html#Anchor">课程介绍</a> 
+      <div class="borderLine"></div> </li> 
+     <li class="comp-tab-item  "> <a href="/class/package/315.html#Anchor">组合套餐</a> 
+      <div class="borderLine"></div> </li> 
+     <li class="comp-tab-item active"> <a href="/class/chapter/315.html#Anchor">章节目录<img class="try-mark" src="/static/module/class/chapter/img/try-mark.png" alt="" /></a> 
+      <div class="borderLine"></div> </li> 
+     <li class="comp-tab-item"> <a href="/class/315.html#Prchor">售前咨询</a> <span>13</span> 
+      <div class="borderLine"></div> </li> 
+     <li class="comp-tab-item "> <a href="/class/evaluation/315.html#Anchor">用户评价</a> <span>16</span> 
+      <div class="borderLine"></div> </li> 
+     <li class="comp-tab-item "> <a href="/class/log/315.html#Log">更新日志</a> 
+      <div class="borderLine"></div> </li> 
+    </ul> 
+   </div> 
+   <div class="js-fixed course-fixed-nav hide"> 
+    <h3 class="fixed-course-name" title="JavaScript版 数据结构与算法">JavaScript版 数据结构与算法</h3> 
+    <ul class="fixed-nav clearfix"> 
+     <li class="fixed-nav-item "> <a href="/class/315.html#Anchor">课程介绍</a> 
+      <div class="borderLine"></div> </li> 
+     <li class="fixed-nav-item "> <a href="/class/package/315.html#Anchor">组合套餐</a> 
+      <div class="borderLine"></div> </li> 
+     <li class="fixed-nav-item active"> <a href="/class/chapter/315.html#Anchor">章节目录<img class="try-mark" src="/static/module/class/chapter/img/try-mark.png" alt="" /></a> 
+      <div class="borderLine"></div> </li> 
+     <li class="fixed-nav-item"> <a href="/class/315.html#Prchor">售前咨询</a> <span>13</span> 
+      <div class="borderLine"></div> </li> 
+     <li class="fixed-nav-item "> <a href="/class/evaluation/315.html#Anchor">用户评价</a> <span>16</span> 
+      <div class="borderLine"></div> </li> 
+     <li class="fixed-nav-item "> <a href="/class/log/315.html#Log">更新日志</a> 
+      <div class="borderLine"></div> </li> 
+    </ul> 
+    <div class="buy-con"> 
+     <div class="btns-buy r"> 
+      <a href="javascript:;" class="js-buy-trigger fixed-red" data-cid="315" data-pay="0" id="buy-trigger"> 立即购买 </a> 
+      <a href="javascript:;" class="js-addcart addcart" data-cid="315" data-type="1"> <i class="sz-add-shopping-cart"></i> </a> 
+     </div> 
+     <!-- 限时优惠倒计时 --> 
+     <span class="r ori-price">￥266.00</span> 
+    </div> 
+   </div> 
+   <div class="infolayout clearfix"> 
+    <div class="w clearfix chapter-div"> 
+     <div class="comp-tabs-pannel class-tab-pannel course-cmt"> 
+      <div class="chapter-box"> 
+       <div class="comp-tabs-pannel  outline-list"> 
+        <ul class="chapter-ul"> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第1章 课程导学</h5> 
+           <p class="desc">对课程整体进行介绍，让您切实感受到前端工程师学习数据结构与算法的必要性。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info js-watchTrigger">1-1 课程导学</span> <span class="watch-free js-watchForFree" data-index="0">试看</span> <input type="hidden" value="22160" /> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">1-2 学习姿势</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">1-3 说明与承诺</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第2章 基础算法之“字符串类”</h5> 
+           <p class="desc">字符串作为JS最基本的数据类型，掌握好字符串类型的算法题目是学习算法最好的入门阶梯，也是业务开发中最受用的部分之一。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">2-1 环境搭建</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">2-2 反转单词原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">2-3 反转单词代码演示</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info js-watchTrigger">2-4 计算子串原理讲解</span> <span class="watch-free js-watchForFree" data-index="1">试看</span> <input type="hidden" value="22106" /> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">2-5 计算子串代码演示</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第3章 基础算法之“数组类”</h5> 
+           <p class="desc">数组是JS世界里必不可少的类型，“小小”的数组，“大大”的世界，一维、二维空间、组合、分组、堆栈、队列等等都离不开它，学习这个章节打开潘朵拉的盒子吧。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-1 数组题目介绍</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-2 电话号码组合-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-3 电话号码组合-代码演示</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-4 卡牌分组-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-5 卡牌分组-代码演示</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-6 种花问题-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-7 种花问题-代码演示</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-8 格雷编码-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">3-9 格雷编码-代码演示</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第4章 基础算法之“正则类”</h5> 
+           <p class="desc">正则是让人又爱又恨的JS知识，“爱”它的神通广大，“恨”它的抽象难懂，我们尝试从基础用法到高级模式匹配让你走近它的梦幻世界</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">4-1 重复的子串-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">4-2 重复的子串-代码演示</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">4-3 正则表达式匹配-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">4-4 正则表达式匹配-代码演示</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第5章 基础算法之“排序类”</h5> 
+           <p class="desc">排序是学生时代标志性的回忆，然而如何魔改“冒泡排序”、“选择排序”让很多看似与排序无关的题目迎刃而解是不是闻所未闻，还等什么呢？</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info js-watchTrigger">5-1 冒泡排序</span> <span class="watch-free js-watchForFree" data-index="2">试看</span> <input type="hidden" value="22149" /> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-2 选择排序</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-3 奇偶排序</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-4 第K个最大值（1）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-5 第K个最大值（2）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-6 最大区间（1）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-7 最大区间（2）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-8 缺失的第一个正数（1）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">5-9 缺失的第一个正数（2）</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第6章 基础算法之“递归类”</h5> 
+           <p class="desc">递归是大家最熟悉的陌生题，往往知道是它的用武之地，可是怎么递归，边界在哪？本章的学习告诉你如何抓住递归的本质，解除你的满脸愕然。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">6-1 复原IP地址-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">6-2 复原IP地址-代码演示</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">6-3 关联字符串-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">6-4 关联字符串-代码演示</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第7章 数据结构之“栈”</h5> 
+           <p class="desc">数组具有栈的功能，如何用？如何用栈去解决自定义数学运算（棒球比赛）是不是很好奇？这个章节答疑解惑。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">7-1 棒球比赛-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">7-2 棒球比赛-代码实操</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">7-3 最大矩形-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">7-4 最大矩阵-代码实操（1）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">7-5 最大矩阵-代码实操（2）</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第8章 数据结构之“队列”</h5> 
+           <p class="desc">队列在数组中已经表现的淋漓尽致了，还记得pop和push吗？可是如果面试限制你使用Array，如何脱颖而出呢？答案就在这一章！</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">8-1 循环队列-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">8-2 循环队列-代码实操</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">8-3 任务队列-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">8-4 任务队列-代码实操</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第9章 数据结构之“链表”</h5> 
+           <p class="desc">链表是一个有序的线性数据结构，对于它而言排序和循环是最基本的两项技能，这个章节从零是实现链表结构到排序、循环检测带你熟知链表结构。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">9-1 排序链表-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">9-2 排序链表-代码实操</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">9-3 环形链表-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">9-4 环形链表-代码实操</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第10章 数据结构之“矩阵”</h5> 
+           <p class="desc">矩阵虽不常见，若见既是霹雳。看似和数组无异，操作起来如同嚼蜡。别怕，同样是数组API、递归，这个章节却可以带你行走如飞。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">10-1 螺旋矩阵-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">10-2 螺旋矩阵-代码实操</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">10-3 旋转图像-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">10-4 旋转图像-代码实操</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第11章 数据结构之“二叉树”</h5> 
+           <p class="desc">二叉树是数据结构中难度最大的没有之一，如何实现一个二叉树结构并对它遍历难于上青天，学完这个章节会让你牢牢掌握二叉树的基础知识。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">11-1 对称二叉树-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">11-2 对称二叉树-代码实操</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">11-3 验证二叉搜索树-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">11-4 验证二叉搜索树-代码实操</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第12章 数据结构之“堆”</h5> 
+           <p class="desc">出去面试数据结构问的最多的就是堆栈和队列了，怎么用JavaScript从零实现一个堆结构是不是很有意义，它又能用在什么场景是不是也志在必得？</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">12-1 堆排序-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">12-2 堆排序-代码演示（1）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">12-3 堆排序-代码演示（2）</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">12-4 超级丑数-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">12-5 超级丑数-代码演示（1)</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">12-6 超级丑数-代码演示（2）</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第13章 进阶算法之“贪婪算法”</h5> 
+           <p class="desc">“贪婪”是人的本性，也是算法的精华。众里寻他千百度，只为求得“最优解”，这一章通过两道经典题目揭开它神秘的面纱。</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">13-1 进阶算法介绍</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">13-2 买卖股票最佳时机-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">13-3 买卖股票最佳时机-代码实操</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">13-4 柠檬水找零-原理讲解</span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">13-5 柠檬水找零-代码实操</span> </li> 
+           </ul> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第14章 进阶算法之“动态规划”</h5> 
+           <p class="desc">“动态规划”听着就那么高大上，这种思维能让你突破无从下手的尴尬局面，通过分步求解寻找最终结果，精通之后会有种醍醐灌顶的惊叹。</p> 
+          </div> </li> 
+         <li class="chapter clearfix"> <i class="chapter-icon sz-chapter"></i> 
+          <div class="chapter-bd l"> 
+           <h5 class="name">第15章 直播视频《前端人的危机如何破解》</h5> 
+           <p class="desc">互联网寒冬下，前端人如何学习？</p> 
+           <ul> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">15-1 1《前端人的危机如何破解》- 内容安排</span> <span class="is_new_img"></span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">15-2 2《前端人的危机如何破解》- 如何学习（入门级）</span> <span class="is_new_img"></span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">15-3 3《前端人的危机如何破解》- 如何面试（入门级）</span> <span class="is_new_img"></span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">15-4 4《前端人的危机如何破解》-如何晋升（入门级）</span> <span class="is_new_img"></span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">15-5 5《前端人的危机如何破解》-如何学习（中高级）</span> <span class="is_new_img"></span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">15-6 6《前端人的危机如何破解》- 如何晋升（中高级）</span> <span class="is_new_img"></span> </li> 
+            <li> <i class="imv2-video"></i> <span class="title_info ">15-7 7《前端人的危机如何破解》- 如何晋升（中高级）</span> <span class="is_new_img"></span> </li> 
+           </ul> 
+          </div> </li> 
+        </ul> 
+       </div> 
+       <div class="chapter-update-state continue" style="padding-left: 72px;line-height: 58px;border-bottom: 1px solid #eceef0;color: #93999f;">
+        本课程持续更新中
+       </div> 
+      </div> 
+     </div> 
+     <div class="right-video-wrap"> 
+      <h2 class="title">试看</h2> 
+      <div class="right-video-box" style="background-image:url(//img.mukewang.com/szimg/5c62a7ef087f103609000500.jpg)"> 
+       <!-- <div class="blur-bg notIE" style="background-image: url(//img.mukewang.com/szimg/5c62a7ef087f103609000500.jpg);"></div>
+        
+            <svg class="blur-bg isIE hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="wh100">
+                <filter id="blur">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                </filter>
+                <image filter="url(#blur)" x="0" y="0" width="100%" height="140%" xlink:href="//img.mukewang.com/szimg/5c62a7ef087f103609000500.jpg" alt=""></image>
+            </svg> --> 
+       <div class="mask"></div> 
+       <div class="content"> 
+        <i class="sz-play video-btn js-enter-tryMedia"></i> 
+        <p>全部试看小节</p> 
+       </div> 
+      </div> 
+     </div> ﻿
+     <div class="recommendcourse"> 
+      <!-- 讲师 --> 
+      <div class="recom-box clearfix"> 
+       <h3 class="box-tit">讲师</h3> 
+       <div class="box-bd"> 
+        <div class="tea-inst"> 
+         <div class="medias"> 
+          <a href="https://www.imooc.com/t/5027812" data-href="https://www.imooc.com/space/teacher/id/5027812" target="_blank"> <img src="//img.mukewang.com/user/54584cb50001e5b302200220-100-100.jpg" class="media" alt="" /> <span class="name">快乐动起来呀...</span> <i class="ic sz-imooc"></i> </a> 
+          <span class="job">Web前端工程师</span> 
+         </div> 
+         <p class="desc">7年工作经验的资深前端工程师，主要从事Web视频领域的底层开发。先后在360、去哪儿网、某知名视频公司工作。先后输出《ES6零基础教学 解析彩票项目》、《前端跳槽面试必备技巧》、《前端面试项目冲刺，京东金融Vue组件化实战》等课程</p> 
+        </div> 
+       </div>
+       <!-- 讲师 end --> 
+       <!-- 课前必学 --> 
+       <div class="js-prelearn-evalution" data-id="315"> 
+       </div> 
+      </div> 
+     </div>
+    </div> 
+    <div id="video-wrap"> 
+     <div id="video-box"> 
+      <div class="video-title"> 
+       <h2>课程预览</h2> 
+       <div id="js-close-mediaview" class="close-mediaview imv2-close"></div> 
+      </div> 
+      <!-- <div id="try-video-container"></div> --> 
+      <ul class="video-list"> 
+      </ul> 
+     </div> 
+     <div class="next-mask" id="next-mask"> 
+      <div class="next-content"> 
+       <div class="wechat-box js-wechat-box"> 
+        <a href="javascript:void(0)" class="moco-icon-close moco-modal-close wechat-close js-wechat-close"></a> 检测到您还没有关注慕课网服务号，无法接收课程更新通知。请扫描二维码即可绑定
+        <div style="text-align:center"> 
+         <img width="100%" src="" />
+        </div> 
+       </div> 
+       <div id="next-media-content"></div> 
+       <a href="javascript:;" class="view-again js-view-again"> <i class="sz-replay"></i>重新观看 </a> 
+      </div> 
+      <i class="helper"></i> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="footer"> 
+    <div class="waper"> 
+     <div class="footerwaper clearfix"> 
+      <div class="followus r"> 
+       <a class="followus-weixin" href="javascript:;" target="_blank" title="微信"> 
+        <div class="flw-weixin-box"></div> </a> 
+       <a class="followus-weibo" href="http://weibo.com/u/3306361973" target="_blank" title="新浪微博"></a> 
+       <a class="followus-qzone" href="http://user.qzone.qq.com/1059809142/" target="_blank" title="QQ空间"></a> 
+      </div> 
+      <div class="footer_intro l"> 
+       <div class="footer_link"> 
+        <ul> 
+         <li><a href="//www.imooc.com/" target="_blank">网站首页</a></li> 
+         <li><a href="//www.imooc.com/index/companytrain" target="_blank" title="企业合作">企业合作</a></li> 
+         <li><a href="//www.imooc.com/about/job" target="_blank">人才招聘</a></li> 
+         <li> <a href="//www.imooc.com/about/contact" target="_blank">联系我们</a></li> 
+         <li> <a href="//www.imooc.com/about/recruit" target="_blank">讲师招募</a></li> 
+         <li> <a href="//www.imooc.com/help/cate/19" target="_blank">帮助中心</a></li> 
+         <li> <a href="//www.imooc.com/user/feedback?coding" target="_blank">意见反馈</a></li> 
+         <li><a href="http://daxue.imooc.com/" target="_blank">慕课大学</a></li> 
+         <li><a href="//git.imooc.com" target="_blank">代码托管</a></li> 
+         <li> <a href="//www.imooc.com/about/friendly" target="_blank">友情链接</a></li> 
+         <!-- <li><a href="http://www.imooc.com/about/us" target="_blank">关于我们</a></li> --> 
+        </ul> 
+       </div> 
+       <p>Copyright &copy; 2019 imooc.com All Rights Reserved | 京ICP备 12003892号-11</p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- 新人有礼入口--> 
+   <a class="newcomer hide" href="//www.imooc.com/act/newcomer" target="_blank"> <i class="js-close imv2-close"></i> </a> 
+   <div id="J_GotoTop" class="elevator"> 
+    <a href="//www.imooc.com/user/feedback?coding" class="elevator-msg" target="_blank"> <i class="sz-feedback"></i> <span class="">意见反馈</span> </a> 
+    <a href="//order.imooc.com/pay/sharegoods" class="elevator-dist" target="_blank"> <i class=""></i> <span class="">去赚学费</span> </a> 
+    <a href="//www.imooc.com/help/cate/19" class="elevator-faq" target="_blank"> <i class="sz-help_outline"></i> <span class="">帮助中心</span> </a> 
+    <a href="//www.imooc.com/mobile/app" target="_blank" class="elevator-app"> <i class="sz-appdownload"></i> <span class="">APP下载</span> 
+     <div class="elevator-app-box"></div> </a> 
+    <a href="javascript:void(0)" class="elevator-weixin no-goto" id="js-elevator-weixin"> <i class="sz-weixigzh"></i> <span class="">官方微信</span> 
+     <div class="elevator-weixin-box"></div> </a> 
+    <a href="javascript:void(0)" class="elevator-top no-goto" style="display:none" id="backTop"> <i class="sz-arrow-up"></i> <span class="">返回顶部</span> </a> 
+   </div> 
+   <!-- 右侧浮动广告位 --> 
+   <div class="lottery" id="moco-right-float-advertising"></div> 
+   <script type="text/javascript" src="//moco.imooc.com/static/monitor/error.js"></script> 
+   <script src="/passport/static/scripts/ssologin.js?v=2.0"></script> 
+   <script type="text/javascript" src="/static/module/common/js/common.js?v=201903151440"></script> 
+   <script type="text/javascript" src="//www.imooc.com/static/moco/v1.0/dist/js/moco.min.js"></script> 
+   <script src="/static/lib/jquery-fly/jquery.fly.js"></script> 
+   <script src="/static/lib/jquery-qrcode/qrcode.js"></script> 
+   <script>
+	    window.GlobalConf = {
+	        course: '315',
+	        user: ''
+	    }
+	</script> 
+   <script data-entry="class/index">
+		requirejs(['class/index'], function(){});
+    (function(){
+    	var imgPic = '//img.mukewang.com/szimg/5c62a4dc0812e84106000338-280-160.jpg' || 'https://www.imooc.com/static/img/index/logo_new.png',
+            text = '我正在参加@慕课网 的一门课程【' + 'JavaScript版 数据结构与算法' + '】，很不错哦！快来一起学习吧！', //节名称
+            url ;
+    	function setConf(cmd,config){
+    		config.bdText = text;
+            config.bdPic = imgPic;
+			if (window.dist_url) {
+                config.bdUrl = window.dist_url;
+            }else{
+            	config.bdUrl = 'https://coding.imooc.com' + window.location.pathname;
+            }
+            return config;
+		}
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {
+                  'tsina':'2788596354'
+                },
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdStyle": "0",
+                "bdSize": "16",
+                "onBeforeClick":setConf
+            },
+            "share": {}
+        };
+        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/lib/baiduShare/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+      })();
+    </script> 
+   <script data-entry="class/chapter/index">requirejs(['class/chapter/index']);</script> 
+   <script data-entry="class/chapter/player">requirejs(['class/chapter/player']);</script> 
+   <div class="comp-modal-overlay"></div> 
+   <div class="modal modal-buy" id="before-buy-modal"> 
+    <div class="inner"> 
+     <div class="header"> 
+      <strong class="tit">购买课程</strong> 
+      <a href="javascript:;" class="help">帮助？</a> 
+     </div> 
+     <div class="content"> 
+      <div class="infos"> 
+       <span class="name">JavaScript版 数据结构与算法</span> 
+       <span class="price"> <i>&yen;</i><b>266</b><i>.00</i> </span> 
+       <span class="deadline"> </span> 
+      </div> 
+     </div> 
+     <div class="footer"> 
+      <a href="javascript:;" class="cancel-btn" rel="modal:close">取消</a> 
+      <a data-href="/pay/buynow/cid/315" href="javascript:;" class="go-pay-btn">去支付</a> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="modal modal-dist-share" id="modal-dist-share"> 
+    <div class="inner"> 
+     <div class="content"> 
+      <div class="dist-share-box bdsharebuttonbox " data-bd-bind="1439263858135"> 
+       <p class="share-msg">邀请好友学习，每邀请一位你将得 <span>&yen;26.60</span><br /></p> 
+       <div class="share-box"> 
+        <a href="javascript:void(0);" onclick="$('#js-signin-btn').click();" class="link imv2-link share dist-share-btn " title="复制"></a> 
+        <a href="javascript:void(0);" onclick="$('#js-signin-btn').click();" class="share wx js-share sz-weixin dist-share-btn js-show-fenxiao" title="分享到微信"> </a> 
+        <a href="javascript:void(0);" onclick="$('#js-signin-btn').click();" class="share qq js-share sz-qq dist-share-btn" title="分享到QQ空间"> </a> 
+        <a href="javascript:void(0);" onclick="$('#js-signin-btn').click();" class="share sina js-share sz-weibo dist-share-btn" title="分享到新浪微博"> </a> 
+        <a href="javascript:void(0);" data-id="315" onclick="$('#js-signin-btn').click();" class="share poster js-poster sz-image dist-share-btn" title="海报"></a> 
+       </div> 
+       <div class="dist-more">
+        <a href="javascript:void(0);" onclick="$('#js-signin-btn').click();" target="_blank" class="share">更多分享赚学费 &gt;&gt;</a>
+       </div> 
+       <div class="close-dist-share imv2-close js-close-distShare"></div> 
+       <input type="hidden" class="dist-copy-content" value="" /> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="modal modal-dist-poster" id="modal-dist-poster"> 
+    <div class="content"> 
+     <h3>分享赚&yen;26.60元</h3> 
+     <span class="sz-close-h js-close-poster"></span> 
+     <input type="hidden" class="js-short-url" value="" /> 
+     <div class="poster-content" id="canvas-contnet"> 
+      <div class="poster-content-1"> 
+       <img class="poster-logo" src="/static/module/img/poster/logo_new.png" alt="" /> 
+       <div class="user-info js-poster-avator"> 
+        <img class="header-img" /> 
+        <p class="nickname js-header-nickname"></p> 
+        <p>向您推荐</p> 
+       </div> 
+       <div class="course-desc-box"> 
+        <dl> 
+         <dt>
+          JavaScript版 数据结构与算法
+         </dt> 
+         <dd>
+          <i></i>
+          <span>首门JavaScript 版数据结构与算法</span>
+         </dd> 
+         <dd>
+          <i></i>
+          <span>LeetCode真题讲解：基础算法+数据结构+进阶算法</span>
+         </dd> 
+         <dd>
+          <i></i>
+          <span>详细讲解+贴心服务，扫除学习中的障碍</span>
+         </dd> 
+         <dd>
+          <i></i>
+          <span>夯实算法基础，助力大厂面试</span>
+         </dd> 
+        </dl> 
+       </div> 
+       <div class="course-info-bar"> 
+        <div class="course-price"> 
+         <h3>￥266.00</h3> 
+         <div class="bar-top"> 
+          <span>中级难度</span> 
+          <span class="itline">/</span> 
+          <span>981 人在学</span> 
+         </div> 
+        </div> 
+        <div class="course-short-qrode"> 
+         <div id="qrcode" class="two-code"></div> 
+         <p>扫码学习</p> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="canvas-img-content" id="canvas-image"> 
+     </div> 
+     <p class="friend-tips">如无法下载使用图片另存为</p> 
+     <span class="js-down-poster">下载海报</span> 
+    </div> 
+   </div> 
+   <div style="display: none"> 
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c1c5f01e0fc4d75fd5cbb16f2e713d56";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script> 
+    <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script> 
+   </div>  
+  </div>
+  <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/main.js"></script>  
+ </body>
+</html>

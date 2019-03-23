@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <title>一对一</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <meta name="description" content="Free HTML5 Website Template" /> 
+  <meta property="og:title" content="" /> 
+  <meta property="og:image" content="" /> 
+  <meta property="og:url" content="" /> 
+  <meta property="og:site_name" content="" /> 
+  <meta property="og:description" content="" /> 
+  <meta name="twitter:title" content="" /> 
+  <meta name="twitter:image" content="" /> 
+  <meta name="twitter:url" content="" /> 
+  <meta name="twitter:card" content="" /> 
+  <link rel="stylesheet" href="css/animate.css" /> 
+  <link rel="stylesheet" href="css/icomoon.css" /> 
+  <link rel="stylesheet" href="css/bootstrap.css" /> 
+  <link rel="stylesheet" href="css/style.css" /> 
+  <link rel="stylesheet" href="css/login.css" />
+  <script src="js/modernizr-2.6.2.min.js"></script> 
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+  </script>
+  <script>
+    $(document).ready(function() {
+      //打开会员登录 
+      $("#Login_start_").click(function() {
+        $("#regist_container").hide();
+        $("#_close").show();
+        $("#_start").animate({
+          left: '350px',
+          height: '520px',
+          width: '400px'
+        }, 500, function() {
+          $("#login_container").show(500);
+          $("#_close").animate({
+            height: '40px',
+            width: '40px'
+          }, 500);
+        });
+      });
+      //打开会员注册
+      $("#Regist_start_").click(function() {
+        $("#login_container").hide();
+        $("#_close").show();
+        $("#_start").animate({
+          left: '350px',
+          height: '520px',
+          width: '400px'
+        }, 500, function() {
+          $("#regist_container").show(500);
+          $("#_close").animate({
+            height: '40px',
+            width: '40px'
+          }, 500);
+        });
+      });
+      //关闭
+      $("#_close").click(function() {
+        
+        $("#_close").animate({
+          height: '0px',
+          width: '0px'
+        }, 500, function() {
+          $("#_close").hide(500);
+          $("#login_container").hide(500);
+          $("#regist_container").hide(500);
+          $("#_start").animate({
+            left: '0px',
+            height: '0px',
+            width: '0px'
+          }, 500);
+        });
+      });
+      //去 注册
+      $("#toRegist").click(function(){
+        $("#login_container").hide(500);
+        $("#regist_container").show(500);
+      });
+      //去 登录
+      $("#toLogin").click(function(){
+        $("#regist_container").hide(500);
+        $("#login_container").show(500);
+      });
+    });
+  </script>
+  <!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]--> 
+ </head> 
+ <body> 
+  <div class="fh5co-loader"></div> 
+  <div id="page"> 
+   <nav class="fh5co-nav" role="navigation"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-xs-3"> 
+       <div id="fh5co-logo">
+        <a href="index.html">One to One</a>
+       </div> 
+      </div> 
+      <div class="col-xs-9 text-right menu-1"> 
+       <ul> 
+        <li class="active"><a href="index.html">首页</a></li> 
+        <li><a href="work.html">课程体系</a></li> 
+        <li> <a href="services.html">活动</a> 
+         </li> 
+         <li><a href="about.html">关于我们</a></li> 
+        <li><a href="contact.html">联系我们</a></li> 
+        <li class="btn-cta">
+          <a id="Login_start_" class="btn btn-danger" style="width:100px;height:40px;border-radius: 0;">登陆</a>
+        </li> 
+        <li class="btn-cta">
+            <a id="Regist_start_" class="btn btn-success" style="width:100px;height:40px;border-radius: 0;">注册</a>
+        </li> 
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </nav> 
+   
+   <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_2.jpg);"> 
+    <div class="overlay"></div> 
+    
+    <div class="container"> 
+     <div class="row"> 
+      <div class="login-box"> 
+        <div class="box-con tran"> 
+         <div class="login-con f-l"> 
+          <div class="form-group"> 
+           <input type="text" placeholder="邮箱/手机号码" /> 
+           <span class="error-notic">邮箱/手机号码不正确</span> 
+          </div> 
+          <div class="form-group"> 
+           <input type="password" placeholder="密码" /> 
+           <span class="error-notic">密码不正确</span> 
+          </div> 
+          <div class="form-group"> 
+           <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">登录</a> <img class="loading" src="images/loading.gif" style="display:block" /> </button> 
+          </div> 
+          <div class="from-line"></div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-signup a-tag tran blue-border">还没有帐号？免费注册<i class="iconfont tran"></i></a> 
+          </div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-reset a-tag tran">忘记密码？重置 <i class="iconfont tran"></i></a> 
+          </div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-other a-tag tran">使用第三方帐号登录<i class="iconfont tran"></i></a> 
+          </div> 
+         </div> 
+         <div class="signup f-l"> 
+          <div class="form-group"> 
+           <div class="signup-form"> 
+            <input type="text" placeholder="邮箱" class="email-mobile" onblur="verify.verifyEmail(this)" /> 
+            <a href="javascript:;" class="signup-select">手机注册</a> 
+           </div> 
+           <span class="error-notic">邮箱格式不正确</span> 
+          </div> 
+          <div class="signup-email"> 
+           <div class="form-group"> 
+            <input type="text" placeholder="您的名字" /> 
+           </div> 
+           <div class="form-group"> 
+            <input type="password" placeholder="密码（字母、数字，至少6位）" onblur="verify.PasswordLenght(this)" /> 
+            <span class="error-notic">密码长度不够</span> 
+           </div> 
+           <div class="form-group"> 
+            <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">注册</a> <img class="loading" src="images/loading.gif" /> </button> 
+           </div> 
+           <p class="view-clause">点击注册，即同意我们的 <a href="#">用户隐私条款</a></p> 
+          </div> 
+          <div class="signup-tel" style="display:none"> 
+           <div class="signup-form" id="message-inf" style="display:none"> 
+            <input type="text" placeholder="短信验证码" style="width:180px;" onblur="verify.VerifyCount(this)" /> 
+            <a href="javascript:;" class="reacquire">重新获取（59）</a> 
+            <span class="error-notic">验证码输入错误</span> 
+           </div> 
+           <div class="form-group"> 
+            <button type="submit" class="tran get-message pr"> <a href="javascript:;" class="tran">获取短信验证码</a> <img class="loading" src="images/loading.gif" /> </button> 
+           </div> 
+          </div> 
+          <div class="from-line"></div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-login a-tag tran blue-border">已有帐号？登录<i class="iconfont tran"></i></a> 
+          </div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-other a-tag tran">使用第三方帐号登录<i class="iconfont tran"></i></a> 
+          </div> 
+         </div> 
+         <div class="other-way f-l"> 
+          <div class="form-group"> 
+           <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">QQ帐号登录</a> <img class="loading" src="images/loading.gif" /> </button> 
+          </div> 
+          <div class="form-group"> 
+           <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">新浪微博帐号登录</a> <img class="loading" src="images/loading.gif" /> </button> 
+          </div> 
+          <div class="form-group"> 
+           <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">微信帐号登录</a> <img class="loading" src="images/loading.gif" /> </button> 
+          </div> 
+          <div class="form-group"> 
+           <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">网易帐号登录</a> <img class="loading" src="images/loading.gif" /> </button> 
+          </div> 
+          <div class="from-line"></div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-signup a-tag tran blue-border">还没有帐号？免费注册<i class="iconfont tran"></i></a> 
+          </div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-login a-tag tran">已有帐号？登录<i class="iconfont tran"></i></a> 
+          </div> 
+         </div> 
+         <div class="mimachongzhi f-l"> 
+          <div class="form-group"> 
+           <input type="text" placeholder="请输入您的邮箱地址" /> 
+           <span class="error-notic">邮箱格式不正确</span> 
+          </div> 
+          <div class="form-group"> 
+           <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">发送重置密码邮件</a> <img class="loading" src="images/loading.gif" /> </button> 
+          </div> 
+          <div class="from-line"></div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-signup	a-tag tran blue-border">还没有帐号？免费注册<i class="iconfont tran"></i></a> 
+          </div> 
+          <div class="form-group"> 
+           <a href="javascript:;" class="move-login a-tag tran">已有帐号？登录<i class="iconfont tran"></i></a> 
+          </div> 
+         </div> 
+         <div class="mobile-success f-l"> 
+          <p>手机号 <span>186****7580</span> 验证成功</p> 
+          <p>请完善您的账号信息，您也可以<a href="#">绑定现有账号</a></p> 
+          <div class="form-group"> 
+           <input type="text" placeholder="邮箱" class="email-mobile" onblur="verify.verifyEmail(this)" /> 
+           <span class="error-notic">邮箱格式不正确</span> 
+          </div> 
+          <div class="form-group"> 
+           <input type="text" placeholder="您的名字" /> 
+          </div> 
+          <div class="form-group"> 
+           <input type="password" placeholder="密码（字母、数字，至少6位）" onblur="verify.PasswordLenght(this)" /> 
+           <span class="error-notic">密码长度不够</span> 
+          </div> 
+          <div class="form-group"> 
+           <button type="submit" class="tran pr"> <a href="javascript:;" class="tran">注册</a> <img class="loading" src="images/loading.gif" /> </button> 
+          </div> 
+          <p class="view-clause">点击注册，即同意我们的 <a href="#">用户隐私条款</a></p> 
+         </div> 
+        </div> 
+       </div> 
+      <div class="col-md-8 col-md-offset-2 text-center"> 
+       <div class="display-t"> 
+        <div class="display-tc animate-box" data-animate-effect="fadeIn"> 
+         <h1>少儿编程时代已经来临</h1> 
+         <div class="row"> 
+          <form class="form-inline" id="fh5co-header-subscribe"> 
+           <div class="col-md-8 col-md-offset-2"> 
+            <div class="form-group"> 
+             <input type="text" class="form-control" id="email" placeholder="Enter your email" /> 
+             <button type="submit" class="btn btn-default">Join Now</button> 
+            </div> 
+           </div> 
+          </form> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    
+   </header> 
+   <div id="fh5co-core-feature"> 
+     <div style="text-align:center">
+        <h1>为什么让孩子学习编程</h1>
+     </div>
+    <div class="container"> 
+     <div class="row"> 
+      <div class="features"> 
+       <div class="col-half animate-box" data-animate-effect="fadeInLeft"> 
+        <div class="table-c"> 
+         <div class="desc"> 
+          <p>最强大脑</p> 
+          <h3>13岁 编程少年  凡正阳</h3> 
+          <p>不仅在《最强大脑》进入全国12强，小小年纪的他，还在第三届全国青少年人工智能创新大赛现场编程小学组荣获一等奖.</p> 
+          <p><a href="#" class="btn btn-lg btn-primary">查看更多</a></p> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="col-half-image-holder animate-box" data-animate-effect="fadeInRight"> 
+        <img class="img-responsive" src="images/samsungs6.png" alt="samsung" /> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="fh5co-services" class="fh5co-bg-section"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-md-4 col-sm-4 text-center"> 
+       <div class="feature-center animate-box" data-animate-effect="fadeIn"> 
+        <span class="icon"> <i class="icon-eye"></i> </span> 
+        <h3>高考</h3> 
+        <p>
+            2014年英国把图形化编程纳入了5岁以上小朋友的必修课； 在法国，编程被纳入了初等义务教育的选修课程； 在北欧国家如芬兰、爱沙尼亚也把编程作为了一门非常重要的义务教育学科。
+            我国浙江省已将编程纳入高考。
+        </p> 
+       </div> 
+      </div> 
+      <div class="col-md-4 col-sm-4 text-center"> 
+       <div class="feature-center animate-box" data-animate-effect="fadeIn"> 
+        <span class="icon"> <i class="icon-command"></i> </span> 
+        <h3>赢得未来</h3> 
+        <p>
+            互联网是目前增长最快的行业之一，也是全球薪资水平最高的职业之一。 仅在美国，互联网行业工程师的薪水就比公民平均收入高75%以上。 预计到2020年，此行业会新增超过10万个就业岗位，编程能力的重要性可见一斑。
+        </p> 
+       </div> 
+      </div> 
+      <div class="col-md-4 col-sm-4 text-center"> 
+       <div class="feature-center animate-box" data-animate-effect="fadeIn"> 
+        <span class="icon"> <i class="icon-power"></i> </span> 
+        <h3>科技界新时尚</h3> 
+        <p>
+            Facebook创始人扎克伯格从六年级开始学习编程， 打败人类围棋顶尖高手李世石的AlphaGo之缔造者、谷歌人工智能设计师杰米斯， 也从8岁就开始喜欢上编程了。 美国总统奥巴马连续两年亲自为编程宣传活动“编程一小时”站台支持孩子学习计算机编程
+        </p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="fh5co-project"> 
+    <div class="container"> 
+     <div class="row animate-box"> 
+      <div class="col-md-8 col-md-offset-2 text-center fh5co-heading"> 
+       <span>Want Some Cool Stuff</span> 
+       <h2>孩子的作品</h2> 
+       <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="project-content"> 
+     <div class="col-half"> 
+      <div class="project animate-box" style="background-image:url(images/project-3.jpg);"> 
+       <div class="desc"> 
+        <span>Application</span> 
+        <h3>Project Name</h3> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="col-half"> 
+      <div class="project-grid animate-box" style="background-image:url(images/project-5.jpg);"> 
+       <div class="desc"> 
+        <span>Illustration</span> 
+        <h3>Project Name</h3> 
+       </div> 
+      </div> 
+      <div class="project-grid animate-box" style="background-image:url(images/project-2.jpg);"> 
+       <div class="desc"> 
+        <span>Branding</span> 
+        <h3>Project Name</h3> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="fh5co-testimonial" class="fh5co-bg-section"> 
+    <div class="container"> 
+     <div class="row animate-box"> 
+      <div class="col-md-8 col-md-offset-2 text-center fh5co-heading"> 
+       <h2>家长说</h2> 
+      </div> 
+     </div> 
+     <div class="row"> 
+      <div class="col-md-10 col-md-offset-1"> 
+       <div class="row"> 
+        <div class="col-md-12 animate-box"> 
+         <div class="testimony"> 
+          <div class="inner text-center"> 
+           <img src="images/person3.jpg" alt="testimony" /> 
+          </div> 
+          <blockquote> 
+           <p>“我是从事软件工作的，在孩子一年级就尝试教他Scratch，但自己工作忙无法持续教导，也就不了了之。好在一年后孩子有幸参加了一对一的编程课，有了专业的老师教导，孩子兴趣愈发浓厚，在几次小码王举办的比赛中取得了不错的成绩，说实话那几次比赛既要有创意，又要准备素材，再要编程完成整个作品，极大的锻炼了孩子的创造力、逻辑思维能力甚至还有修图的技能，可谓全面发展。少年强则中国强，感谢一对一对中国儿童编程教育做出的努力，未来科技人才的培养就需要像一对一这样的教育机构来打头阵！.”</p> 
+           <p class="author"><cite>— John Doe</cite></p> 
+          </blockquote> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <!-- <div id="fh5co-started"> 
+    <div class="container"> 
+     <div class="row animate-box"> 
+      <div class="col-md-8 col-md-offset-2 text-center fh5co-heading"> 
+       <h2>Lets Get Started</h2> 
+       <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p> 
+      </div> 
+     </div> 
+     <div class="row animate-box"> 
+      <div class="col-md-8 col-md-offset-2"> 
+       <form class="form-inline"> 
+        <div class="col-md-6 col-md-offset-3 col-sm-6"> 
+         <button type="submit" class="btn btn-default btn-block">Get In Touch</button> 
+        </div> 
+       </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div>  -->
+   <footer id="fh5co-footer" role="contentinfo"> 
+    <div class="container"> 
+     <div class="row row-pb-md"> 
+      <div class="col-md-4 fh5co-widget"> 
+       <h3>One to One</h3> 
+       <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p> 
+       <p><a href="#">Learn More</a></p> 
+      </div> 
+      <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1"> 
+       <ul class="fh5co-footer-links"> 
+        <li><a href="#">About</a></li> 
+        <li><a href="#">Help</a></li> 
+        <li><a href="#">Contact</a></li> 
+        <li><a href="#">Terms</a></li> 
+        <li><a href="#">Meetups</a></li> 
+       </ul> 
+      </div> 
+      <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1"> 
+       <ul class="fh5co-footer-links"> 
+        <li><a href="#">Shop</a></li> 
+        <li><a href="#">Privacy</a></li> 
+        <li><a href="#">Testimonials</a></li> 
+        <li><a href="#">Handbook</a></li> 
+        <li><a href="#">Held Desk</a></li> 
+       </ul> 
+      </div> 
+      <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1"> 
+       <ul class="fh5co-footer-links"> 
+        <li><a href="#">Find Designers</a></li> 
+        <li><a href="#">Find Developers</a></li> 
+        <li><a href="#">Teams</a></li> 
+        <li><a href="#">Advertise</a></li> 
+        <li><a href="#">API</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="row copyright"> 
+      <div class="col-md-12 text-center"> 
+       <p> </p>
+       <ul class="fh5co-social-icons"> 
+        <li><a href="#"><i class="icon-twitter"></i></a></li> 
+        <li><a href="#"><i class="icon-facebook"></i></a></li> 
+        <li><a href="#"><i class="icon-linkedin"></i></a></li> 
+        <li><a href="#"><i class="icon-dribbble"></i></a></li> 
+       </ul> 
+       <p></p> 
+      </div> 
+     </div> 
+    </div> 
+   </footer> 
+  </div> 
+  <div class="gototop js-top"> 
+   <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a> 
+  </div> 
+  <script type="text/javascript">
+		var clock = '';
+		var nums = 30;
+		var btn;
+		function sendCode(thisBtn) {
+			btn = thisBtn;
+			btn.disabled = true; //将按钮置为不可点击
+			btn.value = '重新获取（'+nums+'）';
+			clock = setInterval(doLoop, 1000); //一秒执行一次
+		}
+
+		function doLoop() {
+			nums--;
+			if (nums > 0) {
+				btn.value = '重新获取（'+nums+'）';
+			} else {
+				clearInterval(clock); //清除js定时器
+				btn.disabled = false;
+				btn.value = '点击发送验证码';
+				nums = 10; //重置时间
+			}
+		}
+		
+		$(document).ready(function(){
+			$("#login_QQ").click(function(){
+				alert("暂停使用！");
+			});
+			$("#login_WB").click(function(){
+				alert("暂停使用！");
+			});
+		});
+	</script>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+  </script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/main.js"></script>  
+ </body>
+</html>
