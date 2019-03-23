@@ -259,7 +259,7 @@
   </div> 
 
   <script>
-    var host ='http://www.icode121.com'
+    var host ='http://127.0.0.1:8000'
     // 获取验证码
     $('#veriftBtn').on('click',function(){
       var phone = $('#phone').val();
@@ -289,11 +289,8 @@
    
       success:function(res){
         console.log('succ')
-        if(res.status == 'ok'){
-          $('#username').text(res.msg)
-          $('#login').css('display','none')
-        }
-        
+        $('#username').text(res.msg)
+        $('#login').css('display','none')
       },
       error:function(){
         console.log('err')

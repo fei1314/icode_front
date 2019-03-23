@@ -28,7 +28,7 @@
 				<div class="login-center-img"><img src="images/verify.png"/></div>
 				<div class="login-center-input">
 					<input class="verify_input" maxlength="4" id="verify" style="width:50%" type="text"  placeholder="请输入图片验证码" onfocus="changeImg()" onblur="this.placeholder='请输入图片验证码'"/>
-					<img id="verifyImg" src="http://www.icode121.com/api/common/captcha" style="width:48%;height:40px;cursor: pointer;" />
+					<img id="verifyImg" src="http://127.0.0.1:8000/api/common/captcha" style="width:48%;height:40px;cursor: pointer;" />
 					<div class="login-center-input-text">图片验证码</div>
 					<div id="verify_tip" class="verify_tip">输入验证码不正确</div>
 				</div>
@@ -56,7 +56,7 @@
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
 </script>
 <script>
-	var host = 'http://www.icode121.com';
+	var host = 'http://127.0.0.1:8000';
 	// 图片验证码获取焦点
 	changeImg = function(){
 		console.log('333')
@@ -115,7 +115,7 @@
 			window.clearInterval(InterValObj1);//停止计时器
 			$("#btnSendCode1").removeAttr("disabled");//启用按钮
 			$("#btnSendCode1").val("重新发送");
-			// sendMessage1()
+			sendMessage1()
 		}
 		else {
 			curCount1--;
