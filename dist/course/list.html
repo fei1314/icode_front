@@ -225,10 +225,10 @@
       function goContent(system_id,course_id){
         $.ajax({
             type:"post",    // 请求类型
-            url:host+"/api/course/get_course_detail_by_id",    // 请求URL
+            url:host+"/api/course/judge_course",    // 请求URL
             data:{
-              "system_id":system_id,
-              "course_id":course_id
+              "course_id":course_id,
+              "system_id":courseId
             },    // 请求参数 即是 在Servlet中 request.getParement();可以得到的字符串
             dataType:"json",    // 数据返回类型
             success:function(res){
@@ -238,6 +238,14 @@
 							}else{
 								$('#meessage_tip').addClass('error')
 							}
+
+              if(res.status == 'ok'){
+								window.open(`course/detail.html?uid=${course_id}`, "_self");
+							}else if(res.status == 'noo'){
+                window.open(`pay/pay.html`, "_self");
+							}else if(res.status == 'no'){
+                window.location.href=`../login.html?redirect=${window.location.pathname}`
+              }
             },
             error:function(){
               console.log('err')
