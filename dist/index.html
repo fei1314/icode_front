@@ -290,7 +290,7 @@
       success:function(res){
         console.log('succ')
         if(res.status == 'ok'){
-          $('#username').text(res.msg)
+          $('#username').text(res.current_user)
           $('#info').css('display','block')
           $('#login').css('display','none')
         }
