@@ -345,7 +345,7 @@
             success:function(res){
               console.log('res',res)
 							if(res.status == 'ok'){
-								window.open(`course/list.html`, "_self");
+								window.open(`course/list.html?uid=${system_id}`, "_self");
 							}else if(res.status == 'noo'){
                 window.open(`pay/pay.html`, "_self");
 							}else if(res.status == 'no'){
