@@ -15,6 +15,9 @@
         // 获取个人信息
        $.ajax({
       type:"get",    // 请求类型
+      xhrFields: {
+                withCredentials: true // 这里设置了withCredentials
+            },
       url:host+"/api/user/ajax/get_user_info/",    // 请求URL
    
       success:function(res){
@@ -39,7 +42,7 @@
                 }
             })
         }else{
-            // window.location.href=`../login.html?redirect=${window.location.pathname}`
+            window.location.href=`../login.html?redirect=${window.location.pathname}`
         }
         
       },
