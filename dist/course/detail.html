@@ -27,7 +27,7 @@
           $('#login').css('display','none')
 
             $.ajax({
-                type:"get",    // 请求类型
+                type:"post",    // 请求类型
                 url:host+"/api/course/course_option",    // 请求URL
                 success:function(res){
                     console.log('succ',res)
