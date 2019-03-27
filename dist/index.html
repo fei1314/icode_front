@@ -48,7 +48,7 @@
          </li> 
          <li><a href="about.html">关于我们</a></li> 
         <li><a href="contact.html">联系我们</a></li> 
-        <li class="btn-cta" id="login"><a href="./login.html"><span>登录</span></a></li> 
+        <li class="btn-cta" id="login"><a href="./login.html"><span id="login_info">登录</span></a></li> 
         <li class="btn-cta" id="info"><a href="#"><span id="username"></span></a></li> 
        </ul> 
       </div> 
@@ -291,8 +291,8 @@
         console.log('succ')
         if(res.status == 'ok'){
           $('#username').text(res.current_user)
-          $('#info').css('display','block')
-          $('#login').css('display','none')
+          $('#info').css('display','block !important')
+          $('#login').css('display','none !important')
         }
         
       },
