@@ -43,7 +43,8 @@
              </li> 
              <li><a href="about.html">关于我们</a></li> 
             <li><a href="contact.html">联系我们</a></li> 
-            <li class="btn-cta"><a href="#"><span>登录</span></a></li> 
+            <li class="btn-cta" id="login"><a href="./login.html"><span>登录</span></a></li> 
+            <li class="btn-cta" id="info"><a href="#"><span id="username"></span></a></li>
            </ul> 
       </div> 
      </div> 
@@ -269,12 +270,28 @@
   <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
   </script>
   <script>
-      var host = "http://127.0.0.1:8000";
+      var host = "https://www.icode121.com";
+      // 获取个人信息
+      $.ajax({
+      type:"get",    // 请求类型
+      url:host+"/api/user/ajax/get_user_info/",    // 请求URL
+   
+      success:function(res){
+        console.log('succ',res)
+        if(res.status == 'ok'){
+          $('#username').text(res.msg)
+          $('#login').css('display','none')
+        }
+        
+      },
+      error:function(){
+        console.log('err')
+      }
+    })
+    // 获取课程体系
       $.ajax({
         type:"get",    // 请求类型
         url:host+"/api/course/all_curriculum",    // 请求URL
-        // cache:false, // 是否缓存
-        // async:true, 
         success:function(res){
           console.log('succ',res)
           if(res.status == 'ok'){
@@ -287,7 +304,7 @@
               <div class="project-grid"> 
                 <img class="active_img" src='./images/project-2.jpg' alt="">
                   <div class="desc"> 
-                    <a href="detail.html">
+                    <a href=course/detail.html?id=${course[i].id}>
                       <span style="color: #fff;">${course[i].course_name}</span> 
                       <h5 style="color:#fff">${course[i].course_desc}</h5> 
                       <div style="display:flex">
@@ -306,9 +323,10 @@
               </div> 
             </div> 
             `
+            $('#coures').append(courseContent)
             }
             console.log('courseContent',courseContent)
-            $('#coures').html(courseContent)
+            
           }
         },
         error:function(){

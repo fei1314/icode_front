@@ -11,20 +11,20 @@
   <!-- <meta http-equiv="Cache-Control" content="no-transform " /> 
   <meta http-equiv="Cache-Control" content="no-siteapp" />  -->
   <meta name="keywords" content="JavaScript数据结构章节，JavaScript算法试看" />
-  <link rel="stylesheet" href="css/animate.css" /> 
-  <link rel="stylesheet" href="css/icomoon.css" /> 
-  <link rel="stylesheet" href="css/bootstrap.css" /> 
-  <link rel="stylesheet" href="css/style.css" /> 
+  <link rel="stylesheet" href="../css/animate.css" /> 
+  <link rel="stylesheet" href="../css/icomoon.css" /> 
+  <link rel="stylesheet" href="../css/bootstrap.css" /> 
+  <link rel="stylesheet" href="../css/style.css" /> 
   <!-- <script src="js/modernizr-2.6.2.min.js"></script>   -->
   <meta name="description" content="本次课程讲师7年工作经验的资深前端工程师，主要从事Web视频领域的底层开发，通过本次课程将带领大家学习基础算法之“字符串类”、基础算法之“数组类”基础算法之“正则类”等相关知识" /> 
-  <link rel="stylesheet" href="css/moco.css" type="text/css" /> 
+  <link rel="stylesheet" href="../css/moco.css" type="text/css" /> 
   <style type="text/css">
     .moco-modal-info {
         font-size: 14px;
         line-height: 20px;
     }
     </style> 
-  <link rel="stylesheet" href="css/common.css" type="text/css" /> 
+  <link rel="stylesheet" href="../css/common.css" type="text/css" /> 
  </head> 
  <body> 
   <!--顶部广告位--> 
@@ -52,7 +52,7 @@
         </div> 
        </nav> 
        <!-- <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_2.jpg);">  -->
-  <div class="course-infos-top " style="background-image:url(images/img_bg_2.jpg);"> 
+  <div class="course-infos-top " style="background-image:url(../);"> 
    <div class="info-wrap"> 
     <div class="title-box" style="margin-top:20px"> 
      <h1>JavaScript版 数据结构与算法</h1> 
@@ -512,13 +512,26 @@
   <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
   </script>
   
-  
+  <script>
+    console.log(window.location.search.substring(4))
+    var courseId = window.location.search.substring(4);
+    $.ajax({
+      url:`https://www.icode121.com/api/course/get_curriculum_by_id/${courseId}/`,
+      type:"get",    // 请求类型
+      success:function(res){
+        console.log('res',res)
+      },
+      error:function(){
+
+      }
+    })
+  </script>
 
   
 
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/main.js"></script>  
+  <script src="../js/jquery.easing.1.3.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.waypoints.min.js"></script>
+  <script src="../js/main.js"></script>  
  </body>
 </html>

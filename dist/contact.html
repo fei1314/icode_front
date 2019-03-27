@@ -44,7 +44,8 @@
                  </li> 
                  <li><a href="about.html">关于我们</a></li> 
                 <li class="active"><a href="contact.html">联系我们</a></li> 
-                <li class="btn-cta"><a href="#"><span>登录</span></a></li> 
+                <li class="btn-cta" id="login"><a href="./login.html"><span>登录</span></a></li> 
+                <li class="btn-cta" id="info"><a href="#"><span id="username"></span></a></li> 
                </ul> 
             </div>
           </div>
@@ -218,8 +219,26 @@
         <i class="icon-arrow-up"></i>
       </a>
     </div>
-    <script data-cfasync="false" src="js/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+      var host ='https://www.icode121.com'
+      $.ajax({
+      type:"get",    // 请求类型
+      url:host+"/api/user/ajax/get_user_info/",    // 请求URL
+   
+      success:function(res){
+        console.log('succ',res)
+        if(res.status == 'ok'){
+          $('#username').text(res.msg)
+          $('#login').css('display','none')
+        }
+        
+      },
+      error:function(){
+        console.log('err')
+      }
+    })
     </script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/bootstrap.min.js"></script>

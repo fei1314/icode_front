@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    11111
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        var host = "https://www.icode121.com";
+        // 获取个人信息
+       $.ajax({
+      type:"get",    // 请求类型
+      url:host+"/api/user/ajax/get_user_info/",    // 请求URL
+   
+      success:function(res){
+        console.log('succ',res)
+        if(res.status == 'ok'){
+          $('#username').text(res.msg)
+          $('#login').css('display','none')
+
+            $.ajax({
+                type:"get",    // 请求类型
+                url:host+"/api/course/course_option",    // 请求URL
+                success:function(res){
+                    console.log('succ',res)
+                    if(res.status == 'ok'){
+                    $('#username').text(res.msg)
+                    $('#login').css('display','none')
+                    }
+                    
+                },
+                error:function(){
+                    console.log('err')
+                }
+            })
+        }else{
+            // window.location.href=`../login.html?redirect=${window.location.pathname}`
+        }
+        
+      },
+      error:function(){
+        console.log('err')
+      }
+    })
+        
+    </script>
+</body>
+</html>

@@ -134,25 +134,19 @@
             },    // 请求参数 即是 在Servlet中 request.getParement();可以得到的字符串
             dataType:"json",    // 数据返回类型
             success:function(res){
-				console.log('res',res)
-				if(res.status == 'ok'){
-					window.open("/", "_self");
-				}else{
-					$('#meessage_tip').addClass('error')
-				}
-            //   $.ajax({
-            //     type:"get",    // 请求类型
-            //     url:host+"/api/user/ajax/get_user_info/",    // 请求URL
-            //     cache:false, // 是否缓存
-            //     async:true, 
-            //     success:function(res){
-            //       console.log('succ')
-            //       $('#username').text(res.msg)
-            //     },
-            //     error:function(){
-            //       console.log('err')
-            //     }
-            //   })
+							var search = window.location.search.substring(10)
+							console.log(res)
+						
+							if(res.status == 'ok'){
+								if(search){
+									window.open(search, "_self");
+								}else{
+									window.open('/', "_self");
+								}
+								
+							}else{
+								$('#meessage_tip').addClass('error')
+							}
             },
             error:function(){
               console.log('err')
