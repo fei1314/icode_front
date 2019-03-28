@@ -315,7 +315,7 @@
       $('#logout').on('click',function(){
           $.ajax({
             type:'get',
-            url:host+'/api/user/ajax/logout',
+            url:host+'/api/user/ajax/logout/',
             success:function(res){
               if(res.status == 'ok'){
                 window.location.href = 'index.html'
