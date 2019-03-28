@@ -298,19 +298,18 @@
             $('#infoBtn').text(res&&res.current_user)
             $('#logoutBtn').css('display','inline-block')
             $('#logoutBtn').text('注销')
-            alert('ok')
+            console.log('ok')
           }else{
            
              $('#loginBtn').css('display','inline-block')
              $('#loginBtn').text('登录')
             $('#infoBtn').css('display','none')
             $('#logoutBtn').css('display','none')
-            alert('no')
+            console.log('no')
           }
           
         },
         error:function(err){
-          alert(err)
           console.error(err)
         },
       })
