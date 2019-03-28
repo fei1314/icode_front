@@ -3,7 +3,7 @@
  <head> 
   <meta charset="utf-8" /> 
   <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
-  <title>一对一</title> 
+  <title>安全</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
   <meta name="description" content="Free HTML5 Website Template" /> 
   <meta property="og:title" content="" /> 
@@ -37,19 +37,20 @@
      <div class="row"> 
       <div class="col-xs-2"> 
        <div id="fh5co-logo">
-        <a href="index.html">One to One</a>
+        <a href="index.html">安全</a>
        </div> 
       </div> 
       <div class="col-xs-9 text-right  menu-1"> 
        <ul> 
-        <li class="active"><a href="index.html">首页</a></li> 
+        <!-- <li class="active"><a href="index.html">首页</a></li> 
         <li><a href="work.html">课程体系</a></li> 
         <li > <a href="services.html" >活动</a> 
          </li> 
          <li><a href="about.html">关于我们</a></li> 
-        <li><a href="contact.html">联系我们</a></li> 
-        <li class="btn-cta" id="login"><a href="./login.html"><span id="login_info">登录</span></a></li> 
+        <li><a href="contact.html">联系我们</a></li>  -->
+        <li class="btn-cta" id="loginBtn"><a href="./login.html"><span id="login_info">登录</span></a></li> 
         <li class="btn-cta" id="info"><a href="#"><span id="username"></span></a></li> 
+        <li class="btn-cta" id="louout"><a href="#"><span id="logout_name"></span></a></li> 
        </ul> 
       </div> 
      </div> 
@@ -286,19 +287,18 @@
     $.ajax({
       type:"get",    // 请求类型
       url:host+"/api/user/ajax/get_user_info/",    // 请求URL
-      xhrFields: {
-        withCredentials: true
-      },
-      crossDomain: true,
       success:function(res){
-        console.log('succ',res)
         if(res.status == 'ok'){
-          console.log('123')
+          $('#loginBtn').css('display','none')
+          $('#info').css('display','inline-block')
           $('#username').text(res.current_user)
-          $('#info').css('display','block !important')
-          $('li #login').css('display','none !important')
+          $('#logout').css('display','inline-block')
+          $('#logout_name').text('注销')
         }else{
-          console.og('456')
+           $('#loginBtn').css('display','inline-block')
+           $('#login_info').text('登录')
+          $('#info').css('display','none')
+          $('#logout').css('display','none')
         }
         
       },
@@ -306,6 +306,20 @@
         console.log('err')
       }
     })
+    // 注销
+    $('#logout').on('click',function(){
+        $.ajax({
+          type:'get',
+          url:host+'/api/user/ajax/logout',
+          success:function(res){
+           
+          },
+          error:function(err){
+            console.error(err)
+          }
+        })
+    })
+    // 登录
     $('#login_btn').on('click',function(){
       $.ajax({
             type:"post",    // 请求类型

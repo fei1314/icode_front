@@ -136,6 +136,6 @@ canvas{
 	cursor:pointer;
 }
 
-#info{
+#info,#louout{
   display: none;
 }
