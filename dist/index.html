@@ -21,115 +21,7 @@
   <link rel="stylesheet" href="css/style.css" /> 
   <link rel="stylesheet" href="css/login.css" />
   <link rel="stylesheet" href="css/iconfont.css" /> 
-  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
-  </script>
-   <script>
-      var host ='https://www.icode121.com'
-      // 获取验证码
-      $('#veriftBtn').on('click',function(){
-        var phone = $('#phone').val();
-        var verify = $('#verify').val();
-        
-        console.log('phone',phone)
-        console.log('verify',verify)
-        $.ajax({
-          type:"post",    // 请求类型
-          url:host+"/api/user/ajax/login/get_cellphone_code",    // 请求URL
-          data:{
-            "user_phone":phone,
-            "captcha":verify
-          },    // 请求参数 即是 在Servlet中 request.getParement();可以得到的字符串
-          dataType:"json",    // 数据返回类型
-          cache:false, // 是否缓存
-          async:true,    // 默认为true 异步请求
-          success:function(result){    // 成功返回的结果(响应)
-          console.log(result)
-            
-          }
-        })
-      })
-      $.ajax({
-        type:"get",    // 请求类型
-        cache:false, // 是否缓存
-        url:host+"/api/user/ajax/get_user_info/?rn="+Date.now(),    // 请求URL
-        success:function(res){
-          if(res.status == 'ok'){
-            $('#loginBtn').css('display','none')
-            $('#infoBtn').css('display','inline-block')
-            $('#infoBtn').text(res&&res.current_user)
-            $('#logoutBtn').css('display','inline-block')
-            $('#logoutBtn').text('注销')
-          }else{
-             $('#loginBtn').css('display','inline-block')
-             $('#loginBtn').text('登录')
-            $('#infoBtn').css('display','none')
-            $('#logoutBtn').css('display','none')
-          }
-          
-        },
-        error:function(){
-          console.log('err')
-        },
-      })
-      // 注销
-      $('#logout').on('click',function(){
-          $.ajax({
-            type:'get',
-            url:host+'/api/user/ajax/logout/',
-            success:function(res){
-              if(res.status == 'ok'){
-                window.location.href = 'index.html'
-                $('#loginBtn').css('display','inline-block')
-             if(!$('#login_info').text()){
-              $('#login_info').text('登录')
-             }
-            $('#info').css('display','none')
-            $('#logout').css('display','none')
-              }
-            },
-            error:function(err){
-              console.error(err)
-            }
-          })
-      })
-      // 登录
-      $('#login_btn').on('click',function(){
-        $.ajax({
-              type:"post",    // 请求类型
-              url:host+"/api/user/ajax/login/cellphone",    // 请求URL
-              data:{
-                "user_phone":$('#phone').val(),
-                "code":$('#duanxin').val()
-              },    // 请求参数 即是 在Servlet中 request.getParement();可以得到的字符串
-              dataType:"json",    // 数据返回类型
-              cache:false, // 是否缓存
-              async:true, 
-              success:function(){
-                $.ajax({
-                  type:"get",    // 请求类型
-                  url:host+"/api/user/ajax/get_user_info/",    // 请求URL
-                  cache:false, // 是否缓存
-                  async:true, 
-                  success:function(res){
-                    console.log('succ')
-                    $('#username').text(res.msg)
-                  },
-                  error:function(){
-                    console.log('err')
-                  }
-                })
-              },
-              error:function(err){
-                console.error(err)
-              }
-            })
-      })
-      // 点击图片验证码
-      $('#verifyImg').on('click',function(){
-        console.log('12')
-          $('#verifyImg').attr('src',host+'/api/common/captcha?rnd'+ Math.random())
-      })
-    </script>
+
   <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]--> 
@@ -367,7 +259,7 @@
    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a> 
   </div> 
 
-  <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
   </script>
    <script>
       var host ='https://www.icode121.com'
@@ -396,25 +288,30 @@
       })
       $.ajax({
         type:"get",    // 请求类型
-        
+        async:false,
         url:host+"/api/user/ajax/get_user_info/?rn="+Date.now(),    // 请求URL
         success:function(res){
           if(res.status == 'ok'){
+            
             $('#loginBtn').css('display','none')
             $('#infoBtn').css('display','inline-block')
             $('#infoBtn').text(res&&res.current_user)
             $('#logoutBtn').css('display','inline-block')
             $('#logoutBtn').text('注销')
+            alert('ok')
           }else{
+           
              $('#loginBtn').css('display','inline-block')
              $('#loginBtn').text('登录')
             $('#infoBtn').css('display','none')
             $('#logoutBtn').css('display','none')
+            alert('no')
           }
           
         },
-        error:function(){
-          console.log('err')
+        error:function(err){
+          alert(err)
+          console.error(err)
         },
       })
       // 注销
@@ -475,7 +372,7 @@
         console.log('12')
           $('#verifyImg').attr('src',host+'/api/common/captcha?rnd'+ Math.random())
       })
-    </script> -->
+    </script>
   <script src="js/modernizr-2.6.2.min.js"></script> 
 
   <script src="js/cors.js"></script>
