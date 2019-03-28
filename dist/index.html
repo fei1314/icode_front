@@ -287,13 +287,9 @@
       type:"get",    // 请求类型
       url:host+"/api/user/ajax/get_user_info/",    // 请求URL
       xhrFields: {
-                      withCredentials: true
-              },
-            crossDomain: true,
-      // beforeSend: function(request) {
-      //     request.setRequestHeader("cookie", "csrftoken=2HlsvqHSSq5eDiqEYaCL82TSST7II1WMQuI5AORM7Z8epyf4KOAC9L1fVIo04V41; sessionid=cqqd232lptocc3wcr4a0rsgj295ze9au");
-      // },
-  
+        withCredentials: true
+      },
+      crossDomain: true,
       success:function(res){
         console.log('succ',res)
         if(res.status == 'ok'){
