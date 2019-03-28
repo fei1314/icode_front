@@ -42,6 +42,17 @@
           },
         })
         
+        $.ajax({
+            type:'post',
+            url:host+'/api/course/course_option',
+            data:{
+              'course':  courseId,
+                'option':'get'
+            },
+            success:function(res){
+                console.log(res)
+            }
+        })
     </script>
 </body>
 </html>
