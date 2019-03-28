@@ -286,19 +286,25 @@
     })
     $.ajax({
       type:"get",    // 请求类型
+      async:true,
       url:host+"/api/user/ajax/get_user_info/",    // 请求URL
       success:function(res){
         if(res.status == 'ok'){
           $('#loginBtn').css('display','none')
           $('#info').css('display','inline-block')
-          $('#username').text(res.current_user)
+          $('#username').text(res&&res.current_user)
           $('#logout').css('display','inline-block')
           $('#logout_name').text('注销')
         }else{
-           $('#loginBtn').css('display','inline-block')
-           $('#login_info').text('登录')
-          $('#info').css('display','none')
-          $('#logout').css('display','none')
+          //  $('#loginBtn').css('display','inline-block')
+          //  $('#login_info').text('登录')
+          // $('#info').css('display','none')
+          // $('#logout').css('display','none')
+          $('#loginBtn').css('display','none')
+          $('#info').css('display','inline-block')
+          $('#username').text(res&&res.current_user)
+          $('#logout').css('display','inline-block')
+          $('#logout_name').text('注销')
         }
         
       },
