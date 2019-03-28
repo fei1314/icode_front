@@ -43,8 +43,9 @@
              </li> 
              <li><a href="about.html">关于我们</a></li> 
             <li><a href="contact.html">联系我们</a></li> 
-            <li class="btn-cta" id="login"><a href="./login.html"><span>登录</span></a></li> 
-            <li class="btn-cta" id="info"><a href="#"><span id="username"></span></a></li>
+            <li><a href="./login.html" id="loginBtn"></a></li> 
+             <li> <a id="infoBtn"></a></li> 
+             <li><a style="cursor:pointer" id="logoutBtn"></a></li> 
            </ul> 
       </div> 
      </div> 
@@ -273,21 +274,32 @@
       var host = "https://www.icode121.com";
       // 获取个人信息
       $.ajax({
-      type:"get",    // 请求类型
-      url:host+"/api/user/ajax/get_user_info/",    // 请求URL
-   
-      success:function(res){
-        console.log('succ',res)
-        if(res.status == 'ok'){
-          $('#username').text(res.msg)
-          $('#login').css('display','none')
-        }
-        
-      },
-      error:function(){
-        console.log('err')
-      }
-    })
+          type:"get",    // 请求类型
+          async:false,
+          url:host+"/api/user/ajax/get_user_info/?rn="+Date.now(),    // 请求URL
+          success:function(res){
+            if(res.status == 'ok'){
+              
+              $('#loginBtn').css('display','none')
+              $('#infoBtn').css('display','inline-block')
+              $('#infoBtn').text(res&&res.current_user)
+              $('#logoutBtn').css('display','inline-block')
+              $('#logoutBtn').text('注销')
+              console.log('ok')
+            }else{
+             
+               $('#loginBtn').css('display','inline-block')
+               $('#loginBtn').text('登录')
+              $('#infoBtn').css('display','none')
+              $('#logoutBtn').css('display','none')
+              console.log('no')
+            }
+            
+          },
+          error:function(err){
+            console.error(err)
+          },
+        })
     // 获取课程体系
       $.ajax({
         type:"get",    // 请求类型
@@ -304,7 +316,7 @@
               <div class="project-grid"> 
                 <img class="active_img" src='./images/project-2.jpg' alt="">
                   <div class="desc"> 
-                    <a onclick=goContent(${course[i].id})>
+                    <a onclick=goContent(${course[i].id}) style="cursor:pointer">
                       <span style="color: #fff;">${course[i].course_name}</span> 
                       <h5 style="color:#fff">${course[i].course_desc}</h5> 
                       <div style="display:flex">

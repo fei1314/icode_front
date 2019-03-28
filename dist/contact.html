@@ -43,9 +43,9 @@
                 <li> <a href="services.html">活动</a> 
                  </li> 
                  <li><a href="about.html">关于我们</a></li> 
-                <li class="active"><a href="contact.html">联系我们</a></li> 
-                <li class="btn-cta" id="login"><a href="./login.html"><span>登录</span></a></li> 
-                <li class="btn-cta" id="info"><a href="#"><span id="username"></span></a></li> 
+                 <li><a href="./login.html" id="loginBtn"></a></li> 
+                 <li> <a id="infoBtn"></a></li> 
+                 <li><a style="cursor:pointer" id="logoutBtn"></a></li>  
                </ul> 
             </div>
           </div>
@@ -224,21 +224,32 @@
     <script>
       var host ='https://www.icode121.com'
       $.ajax({
-      type:"get",    // 请求类型
-      url:host+"/api/user/ajax/get_user_info/",    // 请求URL
-   
-      success:function(res){
-        console.log('succ',res)
-        if(res.status == 'ok'){
-          $('#username').text(res.msg)
-          $('#login').css('display','none')
-        }
-        
-      },
-      error:function(){
-        console.log('err')
-      }
-    })
+          type:"get",    // 请求类型
+          async:false,
+          url:host+"/api/user/ajax/get_user_info/?rn="+Date.now(),    // 请求URL
+          success:function(res){
+            if(res.status == 'ok'){
+              
+              $('#loginBtn').css('display','none')
+              $('#infoBtn').css('display','inline-block')
+              $('#infoBtn').text(res&&res.current_user)
+              $('#logoutBtn').css('display','inline-block')
+              $('#logoutBtn').text('注销')
+              console.log('ok')
+            }else{
+             
+               $('#loginBtn').css('display','inline-block')
+               $('#loginBtn').text('登录')
+              $('#infoBtn').css('display','none')
+              $('#logoutBtn').css('display','none')
+              console.log('no')
+            }
+            
+          },
+          error:function(err){
+            console.error(err)
+          },
+        })
     </script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/bootstrap.min.js"></script>

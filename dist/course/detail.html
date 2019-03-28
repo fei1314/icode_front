@@ -14,44 +14,33 @@
         var host = "https://www.icode121.com";
         var courseId = window.location.search.substring(5)
         // 获取个人信息
-       $.ajax({
-      type:"get",    // 请求类型
-    
-      url:host+"/api/user/ajax/get_user_info/",    // 请求URL
-   
-      success:function(res){
-        console.log('succ',res)
-        if(res.status == 'ok'){
-          $('#username').text(res.msg)
-          $('#login').css('display','none')
-
-            $.ajax({
-                type:"post",    // 请求类型
-                data:{
-                    "course_id":courseId,
-                    "option":'get'
-                },
-                url:host+"/api/course/course_option",    // 请求URL
-                success:function(res){
-                    console.log('succ',res)
-                    if(res.status == 'ok'){
-                   
-                    }
-                    
-                },
-                error:function(){
-                    console.log('err')
-                }
-            })
-        }else{
-            window.location.href=`../login.html?redirect=${window.location.pathname}`
-        }
-        
-      },
-      error:function(){
-        console.log('err')
-      }
-    })
+        $.ajax({
+          type:"get",    // 请求类型
+          async:false,
+          url:host+"/api/user/ajax/get_user_info/?rn="+Date.now(),    // 请求URL
+          success:function(res){
+            if(res.status == 'ok'){
+              
+              $('#loginBtn').css('display','none')
+              $('#infoBtn').css('display','inline-block')
+              $('#infoBtn').text(res&&res.current_user)
+              $('#logoutBtn').css('display','inline-block')
+              $('#logoutBtn').text('注销')
+              console.log('ok')
+            }else{
+             
+               $('#loginBtn').css('display','inline-block')
+               $('#loginBtn').text('登录')
+              $('#infoBtn').css('display','none')
+              $('#logoutBtn').css('display','none')
+              console.log('no')
+            }
+            
+          },
+          error:function(err){
+            console.error(err)
+          },
+        })
         
     </script>
 </body>
