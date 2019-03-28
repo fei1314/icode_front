@@ -314,7 +314,7 @@
         },
       })
       // 注销
-      $('#logout').on('click',function(){
+      $('#logoutBtn').on('click',function(){
           $.ajax({
             type:'get',
             url:host+'/api/user/ajax/logout/',
@@ -322,11 +322,9 @@
               if(res.status == 'ok'){
                 window.location.href = 'index.html'
                 $('#loginBtn').css('display','inline-block')
-             if(!$('#login_info').text()){
-              $('#login_info').text('登录')
-             }
-            $('#info').css('display','none')
-            $('#logout').css('display','none')
+                $('#loginBtn').text('登录')
+            $('#infoBtn').css('display','none')
+            $('#logoutBtn').css('display','none')
               }
             },
             error:function(err){
