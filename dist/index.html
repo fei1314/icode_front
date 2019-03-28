@@ -286,13 +286,20 @@
     $.ajax({
       type:"get",    // 请求类型
       url:host+"/api/user/ajax/get_user_info/",    // 请求URL
-   
+      xhrFields: {
+                      withCredentials: true
+              },
+            crossDomain: true,
+      // beforeSend: function(request) {
+      //     request.setRequestHeader("cookie", "csrftoken=2HlsvqHSSq5eDiqEYaCL82TSST7II1WMQuI5AORM7Z8epyf4KOAC9L1fVIo04V41; sessionid=cqqd232lptocc3wcr4a0rsgj295ze9au");
+      // },
+  
       success:function(res){
-        console.log('succ')
+        console.log('succ',res)
         if(res.status == 'ok'){
           $('#username').text(res.current_user)
           $('#info').css('display','block !important')
-          $('#login').css('display','none !important')
+          $('li #login').css('display','none !important')
         }
         
       },
