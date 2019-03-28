@@ -45,9 +45,12 @@
          </li> 
          <li><a href="about.html">关于我们</a></li> 
         <li><a href="contact.html">联系我们</a></li> 
-        <li class="btn-cta" id="loginBtn"><a href="./login.html"><span id="login_info">登录</span></a></li> 
+        <a id="loginBtn"></a>
+        <a id="infoBtn"></a>
+        <a id="logoutBtn"></a>
+        <!-- <li class="btn-cta" id="loginBtn"><a href="./login.html"><span id="login_info">登录</span></a></li> 
         <li class="btn-cta" id="info"><a href="#"><span id="username"></span></a></li> 
-        <li class="btn-cta" id="logout"><a><span id="logout_name"></span></a></li> 
+        <li class="btn-cta" id="logout"><a><span id="logout_name"></span></a></li>  -->
        </ul> 
       </div> 
      </div> 
@@ -289,21 +292,15 @@
         success:function(res){
           if(res.status == 'ok'){
             $('#loginBtn').css('display','none')
-            $('#info').css('display','inline-block')
-            if(!$('#username').text()){
-              $('#username').text(res&&res.current_user)
-            }
-            $('#logout').css('display','inline-block')
-            if(!$('#logout_name').text()){
-              $('#logout_name').text('注销')
-            }
+            $('#infoBtn').css('display','inline-block')
+            $('#infoBtn').text(res&&res.current_user)
+            $('#logoutBtn').css('display','inline-block')
+            $('#logoutBtn').text('注销')
           }else{
              $('#loginBtn').css('display','inline-block')
-             if(!$('#login_info').text()){
-              $('#login_info').text('登录')
-             }
-            $('#info').css('display','none')
-            $('#logout').css('display','none')
+             $('#loginBtn').text('登录')
+            $('#infoBtn').css('display','none')
+            $('#logoutBtn').css('display','none')
           }
           
         },
