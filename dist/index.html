@@ -54,37 +54,29 @@
         async:true,
         url:host+"/api/user/ajax/get_user_info/",    // 请求URL
         success:function(res){
-          // if(res.status == 'ok'){
-          //   $('#loginBtn').css('display','none')
-          //   $('#info').css('display','inline-block')
-          //   $('#username').text(res&&res.current_user)
-          //   $('#logout').css('display','inline-block')
-          //   $('#logout_name').text('注销')
-          // }else{
-          //    $('#loginBtn').css('display','inline-block')
-          //    $('#login_info').text('登录')
-          //   $('#info').css('display','none')
-          //   $('#logout').css('display','none')
-          // }
+          if(res.status == 'ok'){
+            $('#loginBtn').css('display','none')
+            $('#info').css('display','inline-block')
+            if(!$('#username').text()){
+              $('#username').text(res&&res.current_user)
+            }
+            $('#logout').css('display','inline-block')
+            if(!$('#logout_name').text()){
+              $('#logout_name').text('注销')
+            }
+          }else{
+             $('#loginBtn').css('display','inline-block')
+             if(!$('#login_info').text()){
+              $('#login_info').text('登录')
+             }
+            $('#info').css('display','none')
+            $('#logout').css('display','none')
+          }
           
         },
         error:function(){
           console.log('err')
         },
-        complete:function(res){
-          if(res.status == 'ok'){
-            $('#loginBtn').css('display','none')
-            $('#info').css('display','inline-block')
-            $('#username').text(res&&res.current_user)
-            $('#logout').css('display','inline-block')
-            $('#logout_name').text('注销')
-          }else{
-             $('#loginBtn').css('display','inline-block')
-             $('#login_info').text('登录')
-            $('#info').css('display','none')
-            $('#logout').css('display','none')
-          }
-        }
       })
       // 注销
       $('#logout').on('click',function(){
