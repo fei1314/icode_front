@@ -19,7 +19,6 @@ export async function querySkill() {
 }
 
 export async function fakeSubmitForm(params) {
-  console.log('params',params)
   return request('/api/user/ajax/update_user_info/', {
     method: 'POST',
     headers: {

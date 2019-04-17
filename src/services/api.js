@@ -44,7 +44,6 @@ export async function updateRule(params = {}) {
 }
 // concat us
 export async function fakeSubmitForm(params) {
-  console.log('params',params)
   return request('/api/user/ajax/contact_us/', {
     method: 'POST',
     headers: {

@@ -58,7 +58,6 @@ class CoverCardList extends PureComponent {
           }else if(courseDetail.status == 'no_pay'){
             router.push(`/user/pay?redirect=${window.location.href}`)
           }else if(courseDetail.status == 'ok'){
-              console.log('666')
             router.push(`/coursed/${item.id}`)
           }else{
               message.error('错误')
