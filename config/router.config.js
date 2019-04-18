@@ -54,6 +54,10 @@ export default [
         path: '/coursedc/:id',
         component: './Course/$idc.js',
       },
+      {
+        path: '/asd/pay',
+        component: './Course/CoursePay',
+      },
        // forms
        {
         path: '/form',
@@ -177,7 +181,7 @@ export default [
           },
         ],
       },
-     
+      
       {
         component: '404',
       },

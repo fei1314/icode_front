@@ -12,7 +12,7 @@ export async function queryProvince() {
 }
 
 export async function queryCity(province) {
-  return request(`/api/geographic/city/${province}`);
+  return request(`/api/common/geographic/city/${province}`);
 }
 export async function querySkill() {
   return request(`/api/common/get_all_skills`);

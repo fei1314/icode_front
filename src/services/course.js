@@ -19,6 +19,17 @@ export async function queryCourseComments(params) {
       data:stringify(params)
     });
 }
+// get status
+export async function queryCourseStatus(params) {
+  return request('/api/course/judge_status/', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+    },
+    credentials: 'include',
+    data:stringify(params)
+  });
+}
 // get course content
 export async function queryCourseContent(params) {
     return request('/api/course/course_option/', {

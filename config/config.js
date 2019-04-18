@@ -181,8 +181,19 @@ export default {
       target: 'https://www.icode121.com',
       changeOrigin: true,
     },
-    
-    
+    '/api/course/judge_status/': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
+    '/api/common/geographic/city': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
+    // upload avator
+    '/api/user/ajax/update_user_avatar/': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
   },
   ignoreMomentLocale: true,
   lessLoaderOptions: {

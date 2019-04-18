@@ -1,3 +1,4 @@
+import Sprite from './sprite'
 class Button extends Sprite{
   constructor(drawRectNormal, drawRectActive, x=0, y=0, rotation=0){
     super(drawRectNormal, x, y, rotation);

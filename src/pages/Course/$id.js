@@ -51,20 +51,21 @@ class CourseDetail extends PureComponent {
   }
 //   进入详情页
   getContent = (item) => {
+    console.log('asd')
     const { dispatch } = this.props;
     dispatch({
-        type:'course/fetchContent',
+        type:'course/fetchStatus',
         payload:{
             "course_id":item && item.id,
-            "option":'get'
         }
     }).then(()=>{
-        const { course:{courseContent}} = this.props;
-        if(courseContent.status == 'no_login'){
+        const { course:{statusData}} = this.props;
+        console.log('courseContent',statusData)
+        if(statusData.status == 'no_login'){
             router.push(`/user/login?redirect=${window.location.href}`)
-        }else if(courseContent.status == 'no_pay'){
-          router.push(`/user/pay?redirect=${window.location.href}`)
-        }else if(courseContent.status == 'ok'){
+        }else if(statusData.status == 'no_pay'){
+          router.push(`/asd/pay?redirect=${window.location.href}`)
+        }else if(statusData.status == 'ok'){
           router.push(`/coursedc/${item.id}`)
         }else{
             message.error('错误')
@@ -91,9 +92,6 @@ class CourseDetail extends PureComponent {
         {text}
       </span>
     );
-
- 
-    console.log('courseData',courseData)
     const cardList = courseData ? (
       <List
     itemLayout="vertical"
@@ -107,7 +105,6 @@ class CourseDetail extends PureComponent {
     dataSource={courseData}
     renderItem={(item,index) => (
       <List.Item
-      onClick={this.getContent.bind(this,item)}
         key={item.title}
         actions={[<IconText type="star-o" text={item.count} />, <IconText type="like-o" text={item.like} />]}
         // extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}

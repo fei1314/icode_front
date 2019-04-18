@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import moment from 'moment';
+import router from 'umi/router';
 import { Row, Col, Form, Card, Select,Input,Button, Comment,List,Avatar, Tag,Icon ,message,Tooltip} from 'antd';
 import { FormattedMessage } from 'umi-plugin-react/locale';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
@@ -79,10 +80,14 @@ class CourseDetail extends PureComponent {
             comments: [],
             submitting: false,
             value: '',
-            commentsData:[]
+            commentsData:[],
+            i_like:'',
+            i_favorite:''
         }
     }
   componentDidMount() {
+      console.log('asd',this.props)
+   
       const id = window.location.pathname.substring(10)
       this.setState({
           id
@@ -94,7 +99,23 @@ class CourseDetail extends PureComponent {
         "course_id":id,
         "option":'get'
       }
-    });
+    }).then(()=>{
+      const {
+        course: { courseContent },
+      } = this.props;
+        console.log('courseContent',courseContent)
+        var i_like,i_favorite;
+        if(courseContent && courseContent.status == 'ok'){
+          i_like = courseContent && courseContent.msg && courseContent.msg.i_like;
+          i_favorite = courseContent && courseContent.msg && courseContent.msg.i_favorite;
+          this.setState({
+            i_like:i_like?'twoTone':'',
+            i_favorite:i_favorite?'twoTone':''
+          })
+        }
+        console.log('i_like',i_like)
+        console.log('i_favorite',i_favorite)
+    })
     // 获取评论列表
     dispatch({
         type: 'course/fetchComments',
@@ -185,10 +206,10 @@ class CourseDetail extends PureComponent {
         const msg = courseLike && courseLike.msg;
         msg == 'like' ?
         this.setState({
-            like:'twoTone'
+            i_like:'twoTone'
         }):
         this.setState({
-            like:''
+            i_like:''
         })
     })
   }
@@ -204,12 +225,13 @@ class CourseDetail extends PureComponent {
     }).then(()=>{
         const { course:{courseFavorite}} = this.props;
         const msg = courseFavorite && courseFavorite.msg;
-        console.log('msg',msg)
-        msg == 'success' ?
-        message.success('已经收藏'):
+        msg == 'add favorite success' ?
         this.setState({
-            favorite:'twoTone'
-        })
+            i_favorite:'twoTone'
+        }):
+        this.setState({
+          i_favorite:''
+      })
     })
   }
   handleSubmit = () => {
@@ -230,8 +252,6 @@ class CourseDetail extends PureComponent {
             "star":1
         }
     }).then(()=>{
-        // const {course:{commentData}} = this.props;
-        // console.log('commentData',commentData)
         const { dispatch } = this.props;
         const {id} = this.state;
         dispatch({
@@ -250,23 +270,6 @@ class CourseDetail extends PureComponent {
             submitting: false,
           });
     })
-    
-
-    // setTimeout(() => {
-    //   this.setState({
-    //     submitting: false,
-    //     value: '',
-    //     comments: [
-    //       {
-    //         author: 'Han Solo',
-    //         avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    //         content: <p>{this.state.value}</p>,
-    //         datetime: moment().fromNow(),
-    //       },
-    //       ...this.state.comments,
-    //     ],
-    //   });
-    // }, 1000);
   }
 
   handleChange = (e) => {
@@ -280,8 +283,9 @@ class CourseDetail extends PureComponent {
       loading,
       form,
     } = this.props;
-    const {comments, submitting, value ,commentsData} = this.state;
-    console.log('courseComments',courseComments)
+    const {comments, submitting, value ,commentsData,i_favorite,i_like} = this.state;
+    console.log('courseContent',courseContent)
+
     const { getFieldDecorator } = form;
     let courseData = [];
     if(courseContent.status == 'ok'){
@@ -316,7 +320,7 @@ class CourseDetail extends PureComponent {
       let format = 'mp4';
     return (
         <PageHeaderWrapper>
-            <Card bordered={false} actions={[<Icon onClick={this.favorite} theme={this.state.favorite} type="star-o" />, <Icon theme={this.state.like} type='like-o' onClick={this.clickLike.bind(this,true)} />,]}>
+            <Card bordered={false} actions={[<Icon onClick={this.favorite} theme={i_favorite} type="star-o" />, <Icon theme={i_like} type='like-o' onClick={this.clickLike.bind(this,true)} />,]}>
                 <Xgplayer config={config} format={format} playerInit={(player)=>{ Player = player; }} />
                 
             </Card>

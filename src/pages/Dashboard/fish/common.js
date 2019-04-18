@@ -1,6 +1,6 @@
 let _imgs=null;
 
-const _resources={
+export  var  _resources={
   fish1: 'img/fish1.png',
   fish2: 'img/fish2.png',
   fish3: 'img/fish3.png',
@@ -21,7 +21,7 @@ const _resources={
   number: 'img/number_black.png',
 };
 
-function loadImgs(json, fn){
+export  function loadImgs(json, fn){
   let res={};
   let complete=0;
   let total=0;
@@ -50,12 +50,12 @@ function loadImgs(json, fn){
   }
 }
 
-function d2a(n){
+ export  function d2a(n){
   return n*Math.PI/180;
 }
-function a2d(n){
+export  function a2d(n){
   return n*180/Math.PI;
 }
-function rnd(n, m){
+export  function rnd(n, m){
   return Math.floor(Math.random()*(m-n)+n);
 }

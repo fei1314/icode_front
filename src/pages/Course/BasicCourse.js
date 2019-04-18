@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
-import { Row, Col, Form, Card, Select, List, Tag, message } from 'antd';
+import { Row, Col, Form, Card, Select, List, Tag, message,Icon,Badge } from 'antd';
 import { FormattedMessage } from 'umi-plugin-react/locale';
 import router from 'umi/router';
 import TagSelect from '@/components/TagSelect';
@@ -82,6 +82,7 @@ class CoverCardList extends PureComponent {
         grid={{ gutter: 24, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }}
         dataSource={courseData}
         renderItem={item => (
+          
           <List.Item onClick={this.pushDetail.bind(this,item)}>
             <Card
               className={styles.card}
@@ -112,8 +113,35 @@ class CoverCardList extends PureComponent {
                   </AvatarList>
                 </div>
               </div>
+              <div className={styles.cardItemContent}>
+                <span>定制者：{item.make_user}</span>
+                <span>
+                  课程数：
+                    {
+                        item.course_count
+                    }
+                </span>
+                <span>
+                  购买用户：
+                    {
+                        item.course_count
+                    }
+                </span>
+              </div>
+              <div className={styles.cardItemContent}>
+               
+                <div className={styles.avatarList}>
+                <AvatarList size="mini">
+                        {item.activity.map((member, i) => (
+                            <Tag color="#108ee9">{member.sp_name}</Tag>
+                        ))}
+                      </AvatarList>
+                      <Icon type="shopping-cart" style={{fontSize:20,textAlign:'right'}} />
+                </div>
+              </div>
             </Card>
           </List.Item>
+          
         )}
       />
     ) : null;

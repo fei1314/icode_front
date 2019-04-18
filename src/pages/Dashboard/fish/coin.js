@@ -1,3 +1,4 @@
+import Sprite from './sprite'
 class Coin extends Sprite{
   constructor(type, x=0, y=0, rotation=0){
     const SIZES=[

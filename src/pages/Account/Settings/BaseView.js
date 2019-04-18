@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
-import { Form, Input, Upload, Select, Button,Tag,Spin,message } from 'antd';
+import { Form, Input, Upload, Select, Button,Tag,Spin,message,InputNumber,Icon } from 'antd';
 import { connect } from 'dva';
 import styles from './BaseView.less';
 import GeographicView from './GeographicView';
@@ -15,8 +15,8 @@ const nullSlectItem = {
   key: '',
 };
 const props = {
-  name: 'file',
-  // action: '//jsonplaceholder.typicode.com/posts/',
+  name: 'user_avatar',
+  action: '/api/user/ajax/update_user_avatar/',
   headers: {
     authorization: 'authorization-text',
   },
@@ -107,10 +107,6 @@ class BaseView extends PureComponent {
     dispatch({
       type: 'info/fetchProvince',
     });
-    // 获取技能列表
-    dispatch({
-      type: 'info/fetchSkills',
-    });
   }
 
   setBaseInfo = () => {
@@ -139,12 +135,14 @@ class BaseView extends PureComponent {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
-        console.log('value111s',values)
+        
+        values.user_address = `${values.province}-${values.city}-${values.user_address}`
+        delete values.province;
+        delete values.city;
         this.props.dispatch({
           type: 'info/submitRegularForm',
           payload: values,
         });
-          console.log('222')
     });
 }
 
@@ -170,7 +168,7 @@ getProvinceOption() {
 
 getCityOption = () => {
   const { info:{city} } = this.props;
-  return this.getOption(city);
+  return this.getOption(city&&city.msg);
 };
 
 getOption = list => {
@@ -181,18 +179,18 @@ getOption = list => {
       </Option>
     );
   }
-  return list.map(item => (
-    <Option key={item.id} value={item.id}>
+  return list && list.map(item => (
+    <Option key={item.id} value={item.name}>
       {item.name}
     </Option>
   ));
 };
 
-selectProvinceItem = item => {
+selectProvinceItem = (item,e) => {
   const { dispatch, onChange } = this.props;
   dispatch({
     type: 'info/fetchCity',
-    payload: item,
+    payload: e.key,
   });
   // onChange({
   //   province: item,
@@ -272,7 +270,7 @@ conversionObject() {
                     message: '请输入年龄',
                   },
                 ],
-              })(<Input />)}
+              })( <InputNumber min={1}    />)}
             </FormItem>
             <FormItem label='年级'>
               {getFieldDecorator('user_level', {
@@ -310,27 +308,6 @@ conversionObject() {
                   <Option value="master">精通英语</Option>
                   <Option value="normal">普通读写</Option>
                   <Option value="poor">入门基础</Option>
-                </Select>
-              )}
-            </FormItem>
-            <FormItem label='期望技能'>
-              {getFieldDecorator('user_skill', {
-                initialValue:infomsg &&infomsg.expect_skill&&infomsg.expect_skill[0]&&infomsg.expect_skill[0].skill_name,
-                rules: [
-                  {
-                    required: true,
-                    message: '请选择期望的技能',
-                  },
-                ],
-              })(
-                <Select style={{ maxWidth: 220 }}>
-                  {
-                    skillArr&&skillArr.map(item=>{
-                      return (
-                        <Option key={item.skill_name} value={item.skill_name}>{item.skill_name}</Option>
-                      )
-                    })
-                  }
                 </Select>
               )}
             </FormItem>

@@ -1,3 +1,4 @@
+import { d2a } from '@/utils/utils'
 class Sprite{
   //w,h,x,y,rotate
   //draw(),碰撞检测()
