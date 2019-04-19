@@ -1,5 +1,3 @@
-import Sprite from './sprite'
-import { rnd } from '@/utils/utils'
 class Fish extends Sprite{
     constructor(type, x=0, y=0, rotation=0){
       if(type>5 || type<1){

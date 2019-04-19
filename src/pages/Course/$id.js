@@ -51,21 +51,20 @@ class CourseDetail extends PureComponent {
   }
 //   进入详情页
   getContent = (item) => {
-    console.log('asd')
     const { dispatch } = this.props;
     dispatch({
-        type:'course/fetchStatus',
+        type:'course/fetchContent',
         payload:{
             "course_id":item && item.id,
+            "option":'get'
         }
     }).then(()=>{
-        const { course:{statusData}} = this.props;
-        console.log('courseContent',statusData)
-        if(statusData.status == 'no_login'){
+        const { course:{courseContent}} = this.props;
+        if(courseContent.status == 'no_login'){
             router.push(`/user/login?redirect=${window.location.href}`)
-        }else if(statusData.status == 'no_pay'){
-          router.push(`/asd/pay?redirect=${window.location.href}`)
-        }else if(statusData.status == 'ok'){
+        }else if(courseContent.status == 'no_pay'){
+          router.push(`/user/pay?redirect=${window.location.href}`)
+        }else if(courseContent.status == 'ok'){
           router.push(`/coursedc/${item.id}`)
         }else{
             message.error('错误')
@@ -92,6 +91,9 @@ class CourseDetail extends PureComponent {
         {text}
       </span>
     );
+
+ 
+    console.log('courseData',courseData)
     const cardList = courseData ? (
       <List
     itemLayout="vertical"
@@ -105,20 +107,28 @@ class CourseDetail extends PureComponent {
     dataSource={courseData}
     renderItem={(item,index) => (
       <List.Item
+      onClick={this.getContent.bind(this,item)}
         key={item.title}
         actions={[<IconText type="star-o" text={item.count} />, <IconText type="like-o" text={item.like} />]}
-        // extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+        // extra={<img width={50} alt="logo" src={item.picture} />}
       >
         <List.Item.Meta
-          // avatar={<Avatar src={item.avatar} />}
+          avatar={<Avatar src={item.picture} />}
           title={
           <a onClick={this.getContent.bind(this,item)}>
             <Row gutter={16}>
               <Col span={20}>
-                {index+1}.{item.name}
+              <div>
+                <div>{index+1}.{item.name}</div>
+                <h5 style={{color:'#aaa'}}>{item.desc}</h5>
+              </div>
+                
+                
               </Col>
               <Col span={4}>
+              {/* <Tag style={{marginLeft:20}} color="#108ee9">讲师：{item.lecture__lec_name}</Tag> */}
                 <Tag style={{marginLeft:20}} color="#108ee9">经验值：{item.exp}</Tag>
+                <Tag style={{marginLeft:20}} color="#108ee9">{item.is_video?'视频':'文章'}</Tag>
               </Col>
             </Row>
           </a>

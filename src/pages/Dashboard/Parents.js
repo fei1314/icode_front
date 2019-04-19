@@ -23,6 +23,7 @@ class Parents extends PureComponent {
     if(parentsData.status == 'ok'){
       parentsArr = parentsData.msg;
     }
+    console.log('parentsArr',parentsArr)
     return (
         <div style={{ background: '#ECECEC', padding: '30px' }}>
         <Row gutter={16}>

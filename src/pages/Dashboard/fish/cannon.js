@@ -1,4 +1,3 @@
-import Sprite from './sprite'
 class Cannon extends Sprite{
   constructor(type, x=0, y=0, rotation=0){
     if(type>7 || type<1){

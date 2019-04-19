@@ -181,19 +181,18 @@ export default {
       target: 'https://www.icode121.com',
       changeOrigin: true,
     },
-    '/api/course/judge_status/': {
+    // 获取短信验证码
+    '/api/user/ajax/login/get_cellphone_code': {
       target: 'https://www.icode121.com',
       changeOrigin: true,
     },
-    '/api/common/geographic/city': {
+    // 登录
+    '/api/user/ajax/login/cellphone': {
       target: 'https://www.icode121.com',
       changeOrigin: true,
     },
-    // upload avator
-    '/api/user/ajax/update_user_avatar/': {
-      target: 'https://www.icode121.com',
-      changeOrigin: true,
-    },
+    
+    
   },
   ignoreMomentLocale: true,
   lessLoaderOptions: {

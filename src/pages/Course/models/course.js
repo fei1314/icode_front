@@ -1,4 +1,4 @@
-import { queryCourseList ,queryCourseComments,queryCourseStatus,addCourseComments,queryCourseListDetail,queryCourseContent,queryCourseLike,queryCourseFavorite} from '@/services/course';
+import { queryCourseList ,queryCourseComments,addCourseComments,queryCourseListDetail,queryCourseContent,queryCourseLike,queryCourseFavorite} from '@/services/course';
 
 export default {
   namespace: 'course',
@@ -10,8 +10,7 @@ export default {
     courseLike:[],
     courseFavorite:[],
     courseComments:[],
-    commentData:[],
-    statusData:{}
+    commentData:[]
   },
 
   effects: {
@@ -30,13 +29,6 @@ export default {
           payload: response,
         });
     },
-    *fetchStatus({ payload }, { call, put }) {
-      const response = yield call(queryCourseStatus, payload);
-      yield put({
-        type: 'queryStatus',
-        payload: response,
-      });
-  },
     *fetchContent({ payload }, { call, put }) {
         const response = yield call(queryCourseContent, payload);
         yield put({
@@ -82,12 +74,6 @@ export default {
       return {
         ...state,
         course: action.payload,
-      };
-    },
-    queryStatus(state, action) {
-      return {
-        ...state,
-        statusData: action.payload,
       };
     },
     queryListDetail(state, action) {

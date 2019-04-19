@@ -15,6 +15,11 @@ const { TextArea } = Input;
 }))
 @Form.create()
 class AppointView extends Component {
+  state = {
+    verifyImg:"https://www.icode121.com/api/common/captcha",
+    btnText:'点击获取验证码',
+    isClick:false
+  }
   componentDidMount(){
     const { dispatch } = this.props;
     dispatch({
@@ -35,6 +40,7 @@ class AppointView extends Component {
     form.validateFieldsAndScroll((err, values) => {
       console.log('values',values)
       if (!err) {
+        delete values.captcha;
         dispatch({
           type: 'appoint/submitRegularForm',
           payload: values,
@@ -42,9 +48,60 @@ class AppointView extends Component {
       }
     });
   };
+  // 输入手机号
+  inputPhone = e => {
+    this.setState({
+      user_phone:e.target.value
+    })
+  }
+  // 切换图片验证码
+  changeVerify = () => {
+    var host = 'https://www.icode121.com'
+    this.setState({
+      verifyImg:host+'/api/common/captcha?rnd'+ Math.random()
+    })
+  }
+  // 输入图片验证码
+  inputVerify = e => {
+    this.setState({
+      captcha:e.target.value
+    })
+  }
+  numTime = () =>{
+    var count = 60;
+    this.timer = setInterval(function(){
+      count--
+      if(count == 0) {
+        clearInterval(this.timer)
+        this.setState({
+          btnText:`重新发送`,
+          isClick:false
+        })
+      }else{
+        this.setState({
+          btnText:`${count}秒`,
+          isClick:true
+        })
+      }
+      
+    }.bind(this),1000)
+    
+  }
+  // 获取短信验证码
+  getVerify = () => {
+    const { dispatch } = this.props;
+    const {captcha,user_phone} = this.state;
+    this.numTime()
+    dispatch({
+      type:'appoint/fetchImgVerify',
+      payload:{
+        captcha,user_phone
+      }
+    })
+  }
   render() {
-    const { appoint:{appointData,skillData},form: { getFieldDecorator, getFieldValue },} = this.props;
-    console.log('skillData',skillData)
+    const { appoint:{appointData,skillData,formData},form: { getFieldDecorator, getFieldValue },} = this.props;
+    console.log('formData',formData)
     let data = [],skillArr=[];
     if(appointData.status == 'ok'){
       data = appointData.msg;
@@ -95,30 +152,8 @@ class AppointView extends Component {
                   </Select>
               )}
             </FormItem>
-            {/* <FormItem {...formItemLayout} label='课程类型'>
-              {getFieldDecorator('type', {
-                rules: [
-                  {
-                    required: true,
-                    message: formatMessage({ id: 'validation.title.required' }),
-                  },
-                ],
-              })(
-                  <Select>
-                       <Select.Option key='online' ''>线上</Select.Option>
-                       <Select.Option>线下</Select.Option>
-                  </Select>
-              )}
-            </FormItem> */}
-        
             <FormItem {...formItemLayout} label='预约留言'>
               {getFieldDecorator('content', {
-                // rules: [
-                //   {
-                //     required: true,
-                //     message: formatMessage({ id: 'validation.goal.required' }),
-                //   },
-                // ],
               })(
                 <TextArea
                   style={{ minHeight: 32 }}
@@ -127,7 +162,63 @@ class AppointView extends Component {
                 />
               )}
             </FormItem>
-            
+            {
+              formData && formData.status == 'no'?
+              <div>
+                <FormItem {...formItemLayout} label='手机号'>
+                  {getFieldDecorator('user_phone', {
+                    rules: [
+                      {
+                        required: true,
+                        message:'请输入手机号'
+                      },
+                    ],
+                  })(
+                    <Input onChange={this.inputPhone} placeholder="请输入手机号" />
+                  )}
+                </FormItem>
+                <FormItem {...formItemLayout} label='图片验证码'>
+                {getFieldDecorator('captcha', {
+                  rules: [
+                    {
+                      required: true,
+                      message:'请输入图片验证码'
+                    },
+                  ],
+                })(
+                  <Row gutter={24}>
+                      <Col md={16} xs={24}>
+                      <Input placeholder="请输入图片验证码" onChange={this.inputVerify} />
+                      </Col>
+                      <Col md={8} xs={24}>
+                      <img onClick={this.changeVerify} src={this.state.verifyImg} style={{height:'33px',cursor: 'pointer',}} />
+                      </Col>
+                  </Row>
+                )}
+              </FormItem>
+              <FormItem {...formItemLayout} label='短信验证码'>
+                  {getFieldDecorator('code', {
+                    rules: [
+                      {
+                        required: true,
+                        message:'请输入短信验证码'
+                      },
+                    ],
+                  })(
+                    <Row gutter={24}>
+                      <Col md={16} xs={24}>
+                      <Input onChange={this.inputCode} placeholder="请输入短信验证码" />
+                      </Col>
+                      <Col md={8} xs={24}>
+                        <Button onClick={this.getVerify} disabled={this.state.isClick}>{this.state.btnText}</Button>
+                      </Col>
+                    </Row>
+                    
+                  )}
+                </FormItem>
+              </div>
+              :''
+            }
            
             <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
               <Button type="primary" htmlType="submit" >

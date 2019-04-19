@@ -42,8 +42,35 @@ export async function updateRule(params = {}) {
     },
   });
 }
+// 获取短信验证码
+export async function getImgVerify(params) {
+  console.log('params',params)
+  return request('/api/user/ajax/login/get_cellphone_code', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+      
+    },
+    credentials: 'include',
+    data:stringify(params)
+  });
+}
+// 登录
+export async function submitCourse(params) {
+  console.log('params',params)
+  return request('/api/user/ajax/login/cellphone', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+      
+    },
+    credentials: 'include',
+    data:stringify(params)
+  });
+}
 // concat us
 export async function fakeSubmitForm(params) {
+  console.log('params',params)
   return request('/api/user/ajax/contact_us/', {
     method: 'POST',
     headers: {

@@ -59,6 +59,7 @@ class CardList extends PureComponent {
         />
       </div>
     );
+    console.log('asd',list)
     return (
       <PageHeaderWrapper title="卡片列表" content={content} extraContent={extraContent}>
         <div className={styles.cardList}>

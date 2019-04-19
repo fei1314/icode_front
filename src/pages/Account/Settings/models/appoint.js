@@ -1,4 +1,4 @@
-import { queryAppointData,querySkill,submitCourse,queryForm  } from '@/services/appoint';
+import { queryAppointData,querySkill,submitCourse,queryForm ,getImgVerify } from '@/services/appoint';
 import { message } from 'antd';
 
 export default {
@@ -39,6 +39,12 @@ export default {
             message.error('提交失败')
         }
     },
+    // 获取短信验证码
+    *fetchImgVerify({payload}, { call, put }) {
+      const response = yield call(getImgVerify,payload);
+      console.log('qwe',response)
+    },
+    // 检测是否登录
     *fetchForm(_, { call, put }) {
       const response = yield call(queryForm);
       yield put({
