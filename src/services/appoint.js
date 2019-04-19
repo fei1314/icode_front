@@ -12,7 +12,6 @@ export async function queryForm() {
 }
 // 获取短信验证码
 export async function getImgVerify(params) {
-  console.log('params',params)
   return request('/api/user/ajax/login/get_cellphone_code', {
     method: 'POST',
     headers: {
@@ -25,7 +24,6 @@ export async function getImgVerify(params) {
 }
 // 预约课程
 export async function submitCourse(params) {
-    console.log('params',params)
     return request('/api/user/ajax/make_order/', {
       method: 'POST',
       headers: {
