@@ -15,8 +15,8 @@ const nullSlectItem = {
   key: '',
 };
 const props = {
-  name: 'file',
-  // action: '//jsonplaceholder.typicode.com/posts/',
+  name: 'user_avatar',
+  action: '/api/user/ajax/update_user_avatar/',
   headers: {
     authorization: 'authorization-text',
   },
@@ -123,11 +123,8 @@ class BaseView extends PureComponent {
   };
 
   getAvatarURL() {
-    // const { currentUser } = this.props;
-    // if (currentUser.avatar) {
-    //   return currentUser.avatar;
-    // }
-    const url = 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png';
+    const { info:{currentInfo} } = this.props;
+    const url = `https://www.icode121.com${currentInfo&&currentInfo.msg&&currentInfo.msg.user_avatar}`
     return url;
   }
 
@@ -165,7 +162,7 @@ componentDidUpdate(props) {
 
 getProvinceOption() {
   const { info:{province} } = this.props;
-  return this.getOption(province);
+  return this.getOption(province&&province.msg);
 }
 
 getCityOption = () => {
@@ -181,7 +178,7 @@ getOption = list => {
       </Option>
     );
   }
-  return list.map(item => (
+  return list && list.map(item => (
     <Option key={item.id} value={item.id}>
       {item.name}
     </Option>
@@ -313,27 +310,6 @@ conversionObject() {
                 </Select>
               )}
             </FormItem>
-            <FormItem label='期望技能'>
-              {getFieldDecorator('user_skill', {
-                initialValue:infomsg &&infomsg.expect_skill&&infomsg.expect_skill[0]&&infomsg.expect_skill[0].skill_name,
-                rules: [
-                  {
-                    required: true,
-                    message: '请选择期望的技能',
-                  },
-                ],
-              })(
-                <Select style={{ maxWidth: 220 }}>
-                  {
-                    skillArr&&skillArr.map(item=>{
-                      return (
-                        <Option key={item.skill_name} value={item.skill_name}>{item.skill_name}</Option>
-                      )
-                    })
-                  }
-                </Select>
-              )}
-            </FormItem>
             <FormItem label={formatMessage({ id: 'app.settings.basic.geographic' })}>
               {getFieldDecorator('province', {
                 initialValue:addr&&addr.province,
@@ -403,8 +379,8 @@ conversionObject() {
         </div>
         <div className={styles.right}>
           <div style={{marginBottom:40,marginTop:10}}>
-            <label style={{marginRight:40}} htmlFor="credit">x：{<Tag color="#108ee9" id="credit">123</Tag>}</label>
-            <label htmlFor="exp">y：{<Tag color="#108ee9" id="exp">123</Tag>}</label>
+            <label style={{marginRight:40}} htmlFor="credit">积分：{<Tag color="#108ee9" id="credit">{infomsg&&infomsg.credit}</Tag>}</label>
+            <label htmlFor="exp">经验值：{<Tag color="#108ee9" id="exp">{infomsg&&infomsg.exp}</Tag>}</label>
           </div>
           <AvatarView avatar={this.getAvatarURL()} />
         </div>

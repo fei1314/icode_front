@@ -191,7 +191,20 @@ export default {
       target: 'https://www.icode121.com',
       changeOrigin: true,
     },
-    
+    // 省
+     '/api/common/geographic/province': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
+    // 市
+    '/api/common/geographic/city': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
+    '/api/user/ajax/update_user_avatar/': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
     
   },
   ignoreMomentLocale: true,
