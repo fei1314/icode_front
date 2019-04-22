@@ -107,10 +107,6 @@ class BaseView extends PureComponent {
     dispatch({
       type: 'info/fetchProvince',
     });
-    // 获取技能列表
-    dispatch({
-      type: 'info/fetchSkills',
-    });
   }
 
   setBaseInfo = () => {
@@ -222,15 +218,11 @@ conversionObject() {
   render() {
     const {
       form: { getFieldDecorator },
-      info:{currentInfo,dataSkill}
+      info:{currentInfo}
     } = this.props;
     const infomsg = currentInfo && currentInfo.msg;
     let addr = infomsg && infomsg.user_address;
-    // 技能
-    var skillArr = [];
-    if(dataSkill.status == 'ok'){
-      skillArr = dataSkill.msg;
-    }
+  
     // 地址
     const { province, city } = this.conversionObject();
     const { isLoading } = this.props;
