@@ -1,7 +1,7 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import { Row, Col } from 'antd';
+import { Row, Col,Rate ,Tag} from 'antd';
 import QueueAnim from 'rc-queue-anim';
 
 class Content8 extends React.PureComponent {
@@ -25,6 +25,10 @@ class Content8 extends React.PureComponent {
           </div>
           <h2 {...children.title}>{children.title.children}</h2>
           <div {...children.content}>{children.content.children}</div>
+          <div style={{textAlign:'center',marginTop:5}}>课程数量：<Tag  color="#108ee9">{children.tech_count.children}</Tag></div>
+          <div style={{textAlign:'center'}} >
+          <Rate  value={children.lec_star.children} />
+          </div>
         </div>
       </TweenOne>
     );

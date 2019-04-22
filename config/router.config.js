@@ -43,7 +43,7 @@ export default [
       // course
       {
         path: '/course',
-        name: '课程体系',
+        name: '精选课程',
         component: './Course/BasicCourse',
       },
       {
@@ -57,7 +57,7 @@ export default [
        // forms
        {
         path: '/concat',
-        name: '联系我们',
+        name: '师资力量',
         component: './Forms/BasicForm',
         // routes: [
         //   {

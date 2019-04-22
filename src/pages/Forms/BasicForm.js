@@ -131,6 +131,14 @@ class BasicForms extends PureComponent {
               className: 'content8-content',
               children: item.lec_desc,
             },
+            tech_count: {
+              className: 'content8-content',
+              children: item.tech_count+1,
+            },
+            lec_star: {
+              className: 'content8-content',
+              children: item.lec_star+1,
+            },
           },
         })
       })
