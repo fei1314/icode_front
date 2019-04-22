@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "c54b701946df39ad76c2",
+    "revision": "bb3a02bbb932a5c2bfa8",
     "url": "/p__Forms__BasicForm.async.js"
   },
   {
-    "revision": "8b64111d7669a155f108",
+    "revision": "fe1a70e7ce7cd373a030",
     "url": "/vendors.chunk.css"
   },
   {
@@ -16,15 +16,15 @@ self.__precacheManifest = [
     "url": "/pwacompat.min.js"
   },
   {
-    "revision": "21b27adc2c462efcc11e",
+    "revision": "3a61117952ccf84b1022",
     "url": "/umi.js"
   },
   {
-    "revision": "21b27adc2c462efcc11e",
+    "revision": "3a61117952ccf84b1022",
     "url": "/umi.css"
   },
   {
-    "revision": "8b64111d7669a155f108",
+    "revision": "fe1a70e7ce7cd373a030",
     "url": "/vendors.async.js"
   },
   {
@@ -72,11 +72,11 @@ self.__precacheManifest = [
     "url": "/p__Course__$id.async.js"
   },
   {
-    "revision": "99c322f8850f05a434d1",
+    "revision": "23043b596eb772d00e60",
     "url": "/p__Course__$idc.chunk.css"
   },
   {
-    "revision": "99c322f8850f05a434d1",
+    "revision": "23043b596eb772d00e60",
     "url": "/p__Course__$idc.async.js"
   },
   {
@@ -108,7 +108,7 @@ self.__precacheManifest = [
     "url": "/p__Dashboard__models__monitor.js.async.js"
   },
   {
-    "revision": "c54b701946df39ad76c2",
+    "revision": "bb3a02bbb932a5c2bfa8",
     "url": "/p__Forms__BasicForm.chunk.css"
   },
   {
@@ -136,24 +136,24 @@ self.__precacheManifest = [
     "url": "/p__User__Register.async.js"
   },
   {
-    "revision": "c3eb6822f00442e58f4fae8645276b29",
-    "url": "/ggeditor/flow/normal.svg"
+    "revision": "c34897c103689b920309d1eeeca9ebad",
+    "url": "/ggeditor/flow/start.svg"
   },
   {
     "revision": "17144e737c1051323a69",
     "url": "/p__Account__Settings__Info.async.js"
   },
   {
-    "revision": "c34897c103689b920309d1eeeca9ebad",
-    "url": "/ggeditor/flow/start.svg"
+    "revision": "8bab0e213ae4bfb2ef3dcdc99378610e",
+    "url": "/ggeditor/koni/bank.svg"
   },
   {
     "revision": "20d46caf8e80d74473d9",
     "url": "/p__404.async.js"
   },
   {
-    "revision": "8bab0e213ae4bfb2ef3dcdc99378610e",
-    "url": "/ggeditor/koni/bank.svg"
+    "revision": "23f14d5686d7b771c5bffaa6cd1c3f05",
+    "url": "/ggeditor/koni/country.svg"
   },
   {
     "revision": "10eefcb402e7ad84ac00",
@@ -164,8 +164,8 @@ self.__precacheManifest = [
     "url": "/manifest.json"
   },
   {
-    "revision": "23f14d5686d7b771c5bffaa6cd1c3f05",
-    "url": "/ggeditor/koni/country.svg"
+    "revision": "07dcd135056a94bf54b5525779ab4cef",
+    "url": "/ggeditor/koni/icon.svg"
   },
   {
     "revision": "b1e57c4cbcd3b9123718",
@@ -176,8 +176,8 @@ self.__precacheManifest = [
     "url": "/layouts__UserLayout.async.js"
   },
   {
-    "revision": "e72ea94ad4025edf7a44cf0f88591ee3",
-    "url": "/ggeditor/koni/person.svg"
+    "revision": "347329d0982682b42d40c8162817a940",
+    "url": "/icons/icon-128x128.png"
   },
   {
     "revision": "ee97857a1c4c0203bba4fc53018b7c51",
@@ -196,12 +196,12 @@ self.__precacheManifest = [
     "url": "/icons/icon-192x192.png"
   },
   {
-    "revision": "347329d0982682b42d40c8162817a940",
-    "url": "/icons/icon-128x128.png"
+    "revision": "e72ea94ad4025edf7a44cf0f88591ee3",
+    "url": "/ggeditor/koni/person.svg"
   },
   {
-    "revision": "07dcd135056a94bf54b5525779ab4cef",
-    "url": "/ggeditor/koni/icon.svg"
+    "revision": "c3eb6822f00442e58f4fae8645276b29",
+    "url": "/ggeditor/flow/normal.svg"
   },
   {
     "revision": "7ae8363380c2f7b1cc749be320f584ae",
