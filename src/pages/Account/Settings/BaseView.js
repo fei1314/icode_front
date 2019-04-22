@@ -1,12 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import { formatMessage, FormattedMessage } from 'umi-plugin-react/locale';
-import { Form, Input, Upload, Select, Button,Tag,Spin,message } from 'antd';
+import { Form, Input, Upload, Select, Button,Tag,Spin,message,Row,Col } from 'antd';
 import { connect } from 'dva';
 import styles from './BaseView.less';
 import GeographicView from './GeographicView';
 import PhoneView from './PhoneView';
 // import { getTimeDistance } from '@/utils/utils';
-
+const { TextArea } = Input;
 const FormItem = Form.Item;
 const { Option } = Select;
 
@@ -310,7 +310,9 @@ conversionObject() {
                 </Select>
               )}
             </FormItem>
-            <FormItem label={formatMessage({ id: 'app.settings.basic.geographic' })}>
+            <Row gutter={24}>
+                <Col span={8}>
+                <FormItem label={formatMessage({ id: 'app.settings.basic.geographic' })}>
               {getFieldDecorator('province', {
                 initialValue:addr&&addr.province,
                 rules: [
@@ -318,15 +320,10 @@ conversionObject() {
                     required: true,
                     message: formatMessage({ id: 'app.settings.basic.geographic-message' }, {}),
                   },
-                  // {
-                  //   validator: validatorGeographic,
-                  // },
                 ],
               })(
                     <Select
                     className={styles.item}
-                    // value={addr&&addr.province}
-                    // labelInValue
                     showSearch
                     onSelect={this.selectProvinceItem}
                   >
@@ -334,7 +331,9 @@ conversionObject() {
                   </Select>
               )}
             </FormItem>
-            <FormItem label={formatMessage({ id: 'app.settings.basic.geographic' })}>
+                </Col>
+                <Col span={8}>
+                <FormItem label={formatMessage({ id: 'app.settings.basic.geographic' })}>
               {getFieldDecorator('city', {
                 initialValue:addr&&addr.city,
                 rules: [
@@ -358,7 +357,9 @@ conversionObject() {
                   </Select>
               )}
             </FormItem>
-            <FormItem label={formatMessage({ id: 'app.settings.basic.address' })}>
+                </Col>
+                <Col span={8}>
+                <FormItem label={formatMessage({ id: 'app.settings.basic.address' })}>
               {getFieldDecorator('user_address', {
                 initialValue:addr&&addr.address,
                 rules: [
@@ -367,8 +368,13 @@ conversionObject() {
                     message: formatMessage({ id: 'app.settings.basic.address-message' }, {}),
                   },
                 ],
-              })(<Input />)}
+              })(<TextArea rows={4} cols={100} />)}
             </FormItem>
+                </Col>
+            </Row>
+            
+            
+            
             <Button type="primary" htmlType="submit">
               <FormattedMessage
                 id="app.settings.basic.update"

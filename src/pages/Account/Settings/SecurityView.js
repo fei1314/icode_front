@@ -24,6 +24,7 @@ class SecurityView extends Component {
     if(couponsData.status =='ok'){
       dataArr = couponsData.msg;
     }
+    console.log('dataArr',dataArr)
     const {
       valid = true,
       data = {
@@ -83,17 +84,20 @@ class SecurityView extends Component {
                             <div className={styles.container}>
                             <div className={valid ? styles.left : styles.leftInvalid} />
                             <div className={valid ? styles.couponName : styles.couponNameInvalid}>
-                                {amounts[0]}
+                                {/* {amounts[0]} */}
                                 <span className={styles.subName}>
-                                {amounts[1] ? `.${amounts[1]}` : ''}
-                                {data.unit}
+                                {/* {amounts[1] ? `.${amounts[1]}` : ''}
+                                {data.unit} */}
+                                {
+                                  item.coupon_type == '-'?`减 ${item.coupon_value}`:`${item.coupon_value}折`
+                                }
                                 </span>
                             </div>
                             <div className={styles.dashed} />
                                 <div className={styles.right}>
                                     <div className={valid ? styles.title : styles.invalidTitle}>
-                                    折扣卷{data.amount}
-                                    {data.unit}
+                                    {item.coupon_name}
+                                    {/* {data.unit} */}
                                     </div>
                                     {/* <div className={styles.desc}>{data.number}张</div> */}
                                     <div className={styles.desc}>有效时间：{moment(item.validity_time).format('YYYY-MM-DD HH:mm:ss')}</div>

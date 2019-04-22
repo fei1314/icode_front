@@ -7,7 +7,7 @@ export default class CouponCard extends PureComponent {
       valid = true,
       data = {
         id: 2323,
-        couponDescription: '折扣卷8.5折',
+        couponDescription: '折扣卷8.115折',
         validDate: '2018.08.22-2018.09.12',
         number: 23,
         amount: 8.5,
