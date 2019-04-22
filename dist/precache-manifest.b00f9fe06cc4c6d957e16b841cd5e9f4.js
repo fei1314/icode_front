@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/p__Forms__BasicForm.async.js"
   },
   {
-    "revision": "9915218dda208b7b62fe",
+    "revision": "d7ce556cb803951848b0",
     "url": "/vendors.chunk.css"
   },
   {
@@ -16,15 +16,15 @@ self.__precacheManifest = [
     "url": "/pwacompat.min.js"
   },
   {
-    "revision": "8381b5d7ef5fc2bcdbd1",
+    "revision": "c5254256f0e81112f6db",
     "url": "/umi.js"
   },
   {
-    "revision": "8381b5d7ef5fc2bcdbd1",
+    "revision": "c5254256f0e81112f6db",
     "url": "/umi.css"
   },
   {
-    "revision": "9915218dda208b7b62fe",
+    "revision": "d7ce556cb803951848b0",
     "url": "/vendors.async.js"
   },
   {
@@ -72,19 +72,19 @@ self.__precacheManifest = [
     "url": "/p__Course__$id.async.js"
   },
   {
-    "revision": "df831ce599106a3f6d0d",
+    "revision": "99c322f8850f05a434d1",
     "url": "/p__Course__$idc.chunk.css"
   },
   {
-    "revision": "df831ce599106a3f6d0d",
+    "revision": "99c322f8850f05a434d1",
     "url": "/p__Course__$idc.async.js"
   },
   {
-    "revision": "8d212ce058d132a3397d",
+    "revision": "a019addca076c13209d1",
     "url": "/p__Course__BasicCourse.async.js"
   },
   {
-    "revision": "c91756b9ba9c908722bf",
+    "revision": "f8725eeab118ca72a890",
     "url": "/p__Course__models__course.js.async.js"
   },
   {
@@ -136,24 +136,24 @@ self.__precacheManifest = [
     "url": "/p__User__Register.async.js"
   },
   {
-    "revision": "8bab0e213ae4bfb2ef3dcdc99378610e",
-    "url": "/ggeditor/koni/bank.svg"
+    "revision": "c3eb6822f00442e58f4fae8645276b29",
+    "url": "/ggeditor/flow/normal.svg"
   },
   {
     "revision": "726bafbb689e97f117bd",
     "url": "/p__Account__Settings__Info.async.js"
   },
   {
-    "revision": "23f14d5686d7b771c5bffaa6cd1c3f05",
-    "url": "/ggeditor/koni/country.svg"
+    "revision": "c34897c103689b920309d1eeeca9ebad",
+    "url": "/ggeditor/flow/start.svg"
   },
   {
     "revision": "20d46caf8e80d74473d9",
     "url": "/p__404.async.js"
   },
   {
-    "revision": "07dcd135056a94bf54b5525779ab4cef",
-    "url": "/ggeditor/koni/icon.svg"
+    "revision": "8bab0e213ae4bfb2ef3dcdc99378610e",
+    "url": "/ggeditor/koni/bank.svg"
   },
   {
     "revision": "10eefcb402e7ad84ac00",
@@ -164,8 +164,8 @@ self.__precacheManifest = [
     "url": "/manifest.json"
   },
   {
-    "revision": "c3eb6822f00442e58f4fae8645276b29",
-    "url": "/ggeditor/flow/normal.svg"
+    "revision": "23f14d5686d7b771c5bffaa6cd1c3f05",
+    "url": "/ggeditor/koni/country.svg"
   },
   {
     "revision": "cf9970196a0c31b86ad9",
@@ -176,8 +176,8 @@ self.__precacheManifest = [
     "url": "/layouts__UserLayout.async.js"
   },
   {
-    "revision": "5661ce8e2472d2727e8fd0390b22ba37",
-    "url": "/icons/icon-512x512.png"
+    "revision": "347329d0982682b42d40c8162817a940",
+    "url": "/icons/icon-128x128.png"
   },
   {
     "revision": "ee97857a1c4c0203bba4fc53018b7c51",
@@ -188,20 +188,20 @@ self.__precacheManifest = [
     "url": "/layouts__BasicLayout.async.js"
   },
   {
-    "revision": "c23aa881b8d0e959f6c0aeb5ae7e4baa",
-    "url": "/icons/icon-192x192.png"
+    "revision": "5661ce8e2472d2727e8fd0390b22ba37",
+    "url": "/icons/icon-512x512.png"
   },
   {
-    "revision": "347329d0982682b42d40c8162817a940",
-    "url": "/icons/icon-128x128.png"
+    "revision": "c23aa881b8d0e959f6c0aeb5ae7e4baa",
+    "url": "/icons/icon-192x192.png"
   },
   {
     "revision": "e72ea94ad4025edf7a44cf0f88591ee3",
     "url": "/ggeditor/koni/person.svg"
   },
   {
-    "revision": "c34897c103689b920309d1eeeca9ebad",
-    "url": "/ggeditor/flow/start.svg"
+    "revision": "07dcd135056a94bf54b5525779ab4cef",
+    "url": "/ggeditor/koni/icon.svg"
   },
   {
     "revision": "7ae8363380c2f7b1cc749be320f584ae",
