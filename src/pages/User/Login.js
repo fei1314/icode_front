@@ -25,7 +25,6 @@ class LoginPage extends Component {
   };
 
   componentDidMount(){
-    console.log('asd',window.location)
   }
 
   onTabChange = type => {
@@ -35,7 +34,6 @@ class LoginPage extends Component {
   onGetCaptcha = () =>
     new Promise((resolve, reject) => {
       this.loginForm.validateFields(['user_phone'], {}, (err, values) => {
-        console.log('va',values)
         if (err) {
           reject(err);
         } else {
@@ -48,13 +46,10 @@ class LoginPage extends Component {
             },
           })
             .then(()=>{
-              console.log('qwe',this.props)
               const {login:{verifyData}} = this.props;
               if(verifyData.status == 'ok'){
-                console.log('123')
                 this.numTime()
               }
-              console.log('verifyData',verifyData)
             })
             .catch(reject);
         }
@@ -142,9 +137,7 @@ class LoginPage extends Component {
         captcha,user_phone
       }
     }).then(()=>{
-      console.log('qwe',this.props)
       const {login:{verifyData}} = this.props;
-      console.log('verifyData',verifyData)
     })
   }
   render() {

@@ -1,4 +1,4 @@
-import { queryCourseList ,queryCourseComments,addCourseComments,queryCourseListDetail,queryCourseContent,queryCourseLike,queryCourseFavorite} from '@/services/course';
+import { queryCourseList ,queryCourseComments,joinCourseCart,addCourseComments,queryCourseListDetail,queryCourseContent,queryCourseLike,queryCourseFavorite} from '@/services/course';
 import { message } from 'antd';
 
 export default {
@@ -73,6 +73,15 @@ export default {
           payload: response,
         });
     },
+    // 加入购物车
+    *join_cart({ payload }, { call, put }) {
+      const response = yield call(joinCourseCart, payload);
+      if(response.status == 'ok'){
+        message.success('加入成功')
+      }else{
+        message.error('加入失败')
+      }
+  },
   },
 
   reducers: {

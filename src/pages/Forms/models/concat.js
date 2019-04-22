@@ -1,9 +1,9 @@
 import { routerRedux } from 'dva/router';
 import { message } from 'antd';
-import { fakeSubmitForm } from '@/services/api';
+import { fakeSubmitForm,getTeacher } from '@/services/api';
 
 export default {
-  namespace: 'form',
+  namespace: 'concat',
 
   state: {
     step: {
@@ -12,6 +12,7 @@ export default {
       receiverName: 'Alex',
       amount: '500',
     },
+    dataTeacher:{}
   },
 
   effects: {
@@ -24,6 +25,14 @@ export default {
         message.error('提交失败');
       }
     },
+    // 获取讲师
+    *fetchTeacher({ payload }, { call, put }) {
+      const response = yield call(getTeacher, payload);
+      yield put({
+        type: 'saveTeach',
+        payload: response,
+      });
+  },
     *submitStepForm({ payload }, { call, put }) {
       yield call(fakeSubmitForm, payload);
       yield put({
@@ -39,6 +48,12 @@ export default {
   },
 
   reducers: {
+    saveTeach(state, action) {
+      return {
+        ...state,
+        dataTeacher: action.payload,
+      };
+    },
     saveStepFormData(state, { payload }) {
       return {
         ...state,

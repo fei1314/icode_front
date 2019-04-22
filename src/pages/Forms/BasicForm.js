@@ -54,9 +54,12 @@ const { Option } = Select;
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
-@connect(({ loading }) => ({
-  submitting: loading.effects['form/submitRegularForm'],
+@connect(({ concat,loading }) => ({
+  concat,
+  submitting: loading.effects['concat/submitRegularForm'],
 }))
+
+
 @Form.create()
 class BasicForms extends PureComponent {
   constructor(props) {
@@ -82,6 +85,10 @@ class BasicForms extends PureComponent {
         });
       }, 500);
     }
+    const {dispatch} = this.props;
+    dispatch({
+      type:'concat/fetchTeacher'
+    })
     /* 如果不是 dva 2.0 请删除 end */
   }
 
@@ -90,10 +97,9 @@ class BasicForms extends PureComponent {
     const { dispatch, form } = this.props;
     e.preventDefault();
     form.validateFieldsAndScroll((err, values) => {
-      console.log('values',values)
       if (!err) {
         dispatch({
-          type: 'form/submitRegularForm',
+          type: 'concat/submitRegularForm',
           payload: values,
         });
       }
@@ -104,8 +110,33 @@ class BasicForms extends PureComponent {
     const { submitting } = this.props;
     const {
       form: { getFieldDecorator, getFieldValue },
+      concat:{dataTeacher}
     } = this.props;
-
+    let newChildren=[];
+    if(dataTeacher && dataTeacher.status =='ok'){
+      dataTeacher && dataTeacher.msg && dataTeacher.msg.map((item,index)=>{
+        newChildren.push({
+          name: `block${index}`,
+          md: 6,
+          xs: 24,
+          className: 'content8-block-wrapper',
+          children: {
+            className: 'content8-block',
+            img: {
+              className: 'content8-img',
+              children:item.lec_avatar,
+            },
+            title: { className: 'content8-title', children: item.lec_name },
+            content: {
+              className: 'content8-content',
+              children: item.lec_desc,
+            },
+          },
+        })
+      })
+      
+    }
+    Content80DataSource.block.children = [...newChildren]
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -124,7 +155,6 @@ class BasicForms extends PureComponent {
         sm: { span: 10, offset: 7 },
       },
     };
-
     const children = [
      
       <Banner3

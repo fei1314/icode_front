@@ -44,7 +44,6 @@ export async function updateRule(params = {}) {
 }
 // 获取短信验证码
 export async function getImgVerify(params) {
-  console.log('params',params)
   return request('/api/user/ajax/login/get_cellphone_code', {
     method: 'POST',
     headers: {
@@ -57,7 +56,6 @@ export async function getImgVerify(params) {
 }
 // 登录
 export async function submitCourse(params) {
-  console.log('params',params)
   return request('/api/user/ajax/login/cellphone', {
     method: 'POST',
     headers: {
@@ -70,7 +68,6 @@ export async function submitCourse(params) {
 }
 // concat us
 export async function fakeSubmitForm(params) {
-  console.log('params',params)
   return request('/api/user/ajax/contact_us/', {
     method: 'POST',
     headers: {
@@ -80,6 +77,10 @@ export async function fakeSubmitForm(params) {
     credentials: 'include',
     data:stringify(params)
   });
+}
+// 讲师
+export async function getTeacher() {
+  return request('/api/common/get_top_lectures');
 }
 // 家长
 export async function fetchparentsData() {

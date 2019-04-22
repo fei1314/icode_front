@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import moment from 'moment';
 import { connect } from 'dva';
-import { Row, Col, Form, Card, Select, List, Tag, message } from 'antd';
+import { Row, Col, Form, Card, Select, List,Badge, Tag, Icon,message,Tooltip } from 'antd';
 import { FormattedMessage } from 'umi-plugin-react/locale';
 import router from 'umi/router';
 import TagSelect from '@/components/TagSelect';
@@ -58,12 +58,22 @@ class CoverCardList extends PureComponent {
           }else if(courseDetail.status == 'no_pay'){
             router.push(`/user/pay?redirect=${window.location.href}`)
           }else if(courseDetail.status == 'ok'){
-              console.log('666')
             router.push(`/coursed/${item.id}`)
           }else{
               message.error('错误')
           }
       })
+  }
+  // 加入购物车
+  joinCart = (id) => {
+    const { dispatch } = this.props;
+    dispatch({
+      type:'course/join_cart',
+      payload:{
+        'system_id':id,
+        'option':'add'
+      }
+    })
   }
   render() {
     const {
@@ -83,42 +93,43 @@ class CoverCardList extends PureComponent {
         grid={{ gutter: 24, xl: 4, lg: 3, md: 3, sm: 2, xs: 1 }}
         dataSource={courseData}
         renderItem={item => (
-          <List.Item onClick={this.pushDetail.bind(this,item)}>
+         
+            <List.Item>
+               <Badge count={item&&item.activity&&item.activity[0]&&item.activity[0].sp_name}>
             <Card
               className={styles.card}
               hoverable
               cover={<img alt={item.course_name} src={item.course_picture} />}
             >
               <Card.Meta
+               onClick={this.pushDetail.bind(this,item)}
                 title={<a>{item.course_name}</a>}
                 description={<Ellipsis lines={2}>{item.course_desc}</Ellipsis>}
               />
               <div className={styles.cardItemContent}>
-                <span>{item.lec_name}</span>
-                <span>
-                    {
-                        item.course_total_spend==0?'免费':
-                        item.course_total_spend == item.spend_after_activity?
-                        `￥${item.spend_after_activity}`:
-                        <div>
-                          <span style={{fontSize:'18px',color:'red'}}>￥{item.spend_after_activity}</span>
-                        <del style={{textDecoration:'linethrough',marginLeft:10}}>￥{item.course_total_spend}</del>
-                        </div>
-                        
-                    }
-                </span>
-                <div className={styles.avatarList}>
-                  <AvatarList size="mini">
-                    {item.course_label.map((member, i) => (
-                        <Tag color="#108ee9">{member.label_name}</Tag>
-                    //   <AvatarList.Item
-                    //     key={`${item.id}-avatar-${i}`}
-                    //     src={member.avatar}
-                    //     tips={member.name}
-                    //   />
-                    ))}
-                  </AvatarList>
-                </div>
+              <Row gutter={24}>
+                <Col span={12}>
+                  <span>{item.lec_name}</span>
+                </Col>
+                <Col span={12}>
+                  <span>
+                      {
+                          item.course_total_spend==0?'免费':
+                          item.course_total_spend == item.spend_after_activity?
+                          `￥${item.spend_after_activity}`:
+                          <div>
+                            <span style={{fontSize:'15px',color:'red'}}>￥{item.spend_after_activity}</span>
+                          <del style={{textDecoration:'linethrough',marginLeft:10}}>￥{item.course_total_spend}</del>
+                          </div>
+                          
+                      }
+                  </span>
+                </Col>
+                
+              </Row>
+                
+                
+                
               </div>
               <div className={styles.cardItemContent}>
                 <span>定制者:{item.make_user}</span>
@@ -138,10 +149,37 @@ class CoverCardList extends PureComponent {
                       />
                     ))}
                   </AvatarList>
+                  {/* 等{item && item.join_users&&item.join_users.length}人 */}
                 </div>
               </div>
+              <div className={styles.cardItemContent}>
+              <Row gutter={24}>
+              <Col span={20}>
+                  <div className={styles.avatarList}>
+                    <AvatarList size="mini">
+                      {item.course_label.map((member, i) => (
+                        <Tooltip title={member.label_desc}>
+                        <Tag color="#108ee9">{member.label_name}</Tag>
+                      </Tooltip>
+                          
+                      //   <AvatarList.Item
+                      //     key={`${item.id}-avatar-${i}`}
+                      //     src={member.avatar}
+                      //     tips={member.name}
+                      //   />
+                      ))}
+                    </AvatarList>
+                  </div>
+                </Col>
+                <Col span={4}>
+                <Icon  style={{fontSize:18}} type="shopping-cart" onClick={this.joinCart.bind(this,item.id)}>加入购物车</Icon>
+                </Col>
+              </Row>
+              </div>
             </Card>
+            </Badge>
           </List.Item>
+         
         )}
       />
     ) : null;

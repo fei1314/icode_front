@@ -63,3 +63,14 @@ export async function addCourseComments(params) {
       data:stringify(params)
     });
 }
+// 加入购物车
+export async function joinCourseCart(params) {
+  return request('/api/course/trolley_option', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+    },
+    credentials: 'include',
+    data:stringify(params)
+  });
+}

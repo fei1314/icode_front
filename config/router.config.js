@@ -56,7 +56,7 @@ export default [
       },
        // forms
        {
-        path: '/form',
+        path: '/concat',
         name: '联系我们',
         component: './Forms/BasicForm',
         // routes: [

@@ -205,6 +205,16 @@ export default {
       target: 'https://www.icode121.com',
       changeOrigin: true,
     },
+    // 加入购物车
+    '/api/course/trolley_option': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
+    // 讲师
+    '/api/common/get_top_lectures': {
+      target: 'https://www.icode121.com',
+      changeOrigin: true,
+    },
     
   },
   ignoreMomentLocale: true,
