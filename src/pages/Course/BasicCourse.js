@@ -97,7 +97,14 @@ class CoverCardList extends PureComponent {
                 <span>{item.lec_name}</span>
                 <span>
                     {
-                        item.course_total_spend==0?'免费':`￥${item.course_total_spend}`
+                        item.course_total_spend==0?'免费':
+                        item.course_total_spend == item.spend_after_activity?
+                        `￥${item.spend_after_activity}`:
+                        <div>
+                          <span style={{fontSize:'18px',color:'red'}}>￥{item.spend_after_activity}</span>
+                        <del style={{textDecoration:'linethrough',marginLeft:10}}>￥{item.course_total_spend}</del>
+                        </div>
+                        
                     }
                 </span>
                 <div className={styles.avatarList}>
@@ -109,6 +116,26 @@ class CoverCardList extends PureComponent {
                     //     src={member.avatar}
                     //     tips={member.name}
                     //   />
+                    ))}
+                  </AvatarList>
+                </div>
+              </div>
+              <div className={styles.cardItemContent}>
+                <span>定制者:{item.make_user}</span>
+                <span>
+                  课程数：
+                    {
+                        item.course_count
+                    }
+                </span>
+                <div className={styles.avatarList}>
+                  <AvatarList size="mini">
+                    {item.join_users.map((member, i) => (
+                      <AvatarList.Item
+                        key={`${item.i}-avatar-${i}`}
+                        src={`https://www.icode121.com/${member.user_avatar}`}
+                        tips={member.user_name}
+                      />
                     ))}
                   </AvatarList>
                 </div>

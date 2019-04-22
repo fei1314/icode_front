@@ -18,13 +18,12 @@ class AppointView extends Component {
   state = {
     verifyImg:"https://www.icode121.com/api/common/captcha",
     btnText:'点击获取验证码',
-    isClick:false
+    isClick:false,
+    tabVal:1
   }
   componentDidMount(){
     const { dispatch } = this.props;
-    dispatch({
-      type:'appoint/fetch'
-    })
+    
     dispatch({
       type:'appoint/fetchForm'
     })
@@ -38,15 +37,19 @@ class AppointView extends Component {
     const { dispatch, form } = this.props;
     e.preventDefault();
     form.validateFieldsAndScroll((err, values) => {
-      console.log('values',values)
       if (!err) {
         delete values.captcha;
         dispatch({
           type: 'appoint/submitRegularForm',
           payload: values,
-        });
+        }).then(()=>{
+          this.setState({
+            tabVal:2
+          })
+        })
       }
     });
+    form.resetFields()
   };
   // 输入手机号
   inputPhone = e => {
@@ -99,9 +102,17 @@ class AppointView extends Component {
       }
     })
   }
+  // 切换tab
+  callback = (key) =>{
+    const { dispatch } = this.props;
+    if(key == 2){
+      dispatch({
+        type:'appoint/fetch'
+      })
+    }
+  }
   render() {
     const { appoint:{appointData,skillData,formData},form: { getFieldDecorator, getFieldValue },} = this.props;
-    console.log('formData',formData)
     let data = [],skillArr=[];
     if(appointData.status == 'ok'){
       data = appointData.msg;
@@ -129,7 +140,7 @@ class AppointView extends Component {
       };
     return (
       <Fragment>
-          <Tabs defaultActiveKey="1">
+          <Tabs defaultActiveKey={this.state.tabVal} onChange={this.callback}>
             <TabPane tab="预约课程" key="1">
             <Form onSubmit={this.handleSubmit} hideRequiredMark style={{ marginTop: 8 }}>
             <FormItem {...formItemLayout} label='课程名称'>

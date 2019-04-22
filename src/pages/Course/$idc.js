@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import moment from 'moment';
-import { Row, Col, Form, Card, Select,Input,Button, Comment,List,Avatar, Tag,Icon ,message,Tooltip} from 'antd';
+import { Row, Col, Form, Card, Rate,Select,Input,Button, Comment,List,Avatar, Tag,Icon ,message,Tooltip} from 'antd';
 import { FormattedMessage } from 'umi-plugin-react/locale';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import TagSelect from '@/components/TagSelect';
@@ -41,7 +41,7 @@ const Editor = ({
         onClick={onSubmit}
         type="primary"
       >
-        Add Comment
+        添加评论
       </Button>
     </Form.Item>
   </div>
@@ -79,7 +79,8 @@ class CourseDetail extends PureComponent {
             comments: [],
             submitting: false,
             value: '',
-            commentsData:[]
+            commentsData:[],
+            starVal:''
         }
     }
   componentDidMount() {
@@ -94,7 +95,33 @@ class CourseDetail extends PureComponent {
         "course_id":id,
         "option":'get'
       }
-    });
+    }).then(()=>{
+      const {
+        course: { courseContent },
+      } = this.props;
+      let msg='';
+      if(courseContent.status == 'ok'){
+        msg = courseContent.msg;
+        if(msg.i_favorite){
+          this.setState({
+            favorite:'twoTone'
+          })
+        }else{
+          this.setState({
+            favorite:''
+          })
+        }
+        if(msg.i_like){
+          this.setState({
+            like:'twoTone'
+          })
+        }else{
+          this.setState({
+            like:''
+          })
+        }
+      }
+    })
     // 获取评论列表
     dispatch({
         type: 'course/fetchComments',
@@ -205,10 +232,12 @@ class CourseDetail extends PureComponent {
         const { course:{courseFavorite}} = this.props;
         const msg = courseFavorite && courseFavorite.msg;
         console.log('msg',msg)
-        msg == 'success' ?
-        message.success('已经收藏'):
+        msg == 'add favorite success' ?
         this.setState({
             favorite:'twoTone'
+        }):
+        this.setState({
+          favorite:''
         })
     })
   }
@@ -216,7 +245,7 @@ class CourseDetail extends PureComponent {
     if (!this.state.value) {
       return;
     }
-    const {id} = this.state;
+    const {id,starVal} = this.state;
     const {dispatch} = this.props;
     this.setState({
         submitting: true,
@@ -227,7 +256,7 @@ class CourseDetail extends PureComponent {
             'course_id':  id,
             'option':'comment',
             "comment":this.state.value,
-            "star":1
+            "star":starVal
         }
     }).then(()=>{
         // const {course:{commentData}} = this.props;
@@ -250,23 +279,6 @@ class CourseDetail extends PureComponent {
             submitting: false,
           });
     })
-    
-
-    // setTimeout(() => {
-    //   this.setState({
-    //     submitting: false,
-    //     value: '',
-    //     comments: [
-    //       {
-    //         author: 'Han Solo',
-    //         avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    //         content: <p>{this.state.value}</p>,
-    //         datetime: moment().fromNow(),
-    //       },
-    //       ...this.state.comments,
-    //     ],
-    //   });
-    // }, 1000);
   }
 
   handleChange = (e) => {
@@ -274,14 +286,24 @@ class CourseDetail extends PureComponent {
       value: e.target.value,
     });
   }
+
+  // 打分
+  changeStar = (val) =>{
+    this.setState({
+      starVal:val
+    })
+  }
+  // 禁止下载视频
+  changeMenu = () => {
+    return false;
+  }
   render() {
     const {
       course: { courseContent,courseComments },
       loading,
       form,
     } = this.props;
-    const {comments, submitting, value ,commentsData} = this.state;
-    console.log('courseComments',courseComments)
+    const {comments, submitting, value ,commentsData,favorite,like} = this.state;
     const { getFieldDecorator } = form;
     let courseData = [];
     if(courseContent.status == 'ok'){
@@ -316,33 +338,69 @@ class CourseDetail extends PureComponent {
       let format = 'mp4';
     return (
         <PageHeaderWrapper>
-            <Card bordered={false} actions={[<Icon onClick={this.favorite} theme={this.state.favorite} type="star-o" />, <Icon theme={this.state.like} type='like-o' onClick={this.clickLike.bind(this,true)} />,]}>
-                <Xgplayer config={config} format={format} playerInit={(player)=>{ Player = player; }} />
-                
+            <Card bordered={false} actions={[<Icon onClick={this.favorite} theme={favorite} type="star-o" />, <Icon theme={like} type='like-o' onClick={this.clickLike.bind(this,true)} />,]}>
+                {/* <Xgplayer config={config} format={format} playerInit={(player)=>{ Player = player; }} /> */}
+                <video onContextMenu={this.changeMenu} controlslist="nodownload" poster="https://sf1-ttcdn-tos.pstatp.com/obj/ttfe/stc_video/Lark20181122-110704.png" width="100%" height="640" controls="controls" src={`https://www.icode121.com/media/${courseData.content}`}></video>
             </Card>
             <Card bordered={false} style={{marginTop:20}}>
                 <div>
-                    {commentsData.length > 0 &&
+                <List
+    className="comment-list"
+    header={`${commentsData.length} 个评论`}
+    pagination={{
+      onChange: (page) => {
+        console.log(page);
+      },
+      pageSize: 3,
+    }}
+    itemLayout="horizontal"
+    dataSource={commentsData}
+    renderItem={item => (
+      <Comment
+      author={<a>{item.user__user_name}</a>}
+      avatar={(
+      <Avatar
+          src={`https://www.icode121.com/${item.user__user_avatar}`}
+          alt="头像"
+      />
+      )}
+      content={(
+      <p>{item.comment}</p>
+      )}
+      datetime={(
+          <span>
+            <span>{moment(item.create_time).format('YYYY-MM-DD HH:mm:ss')}</span>
+            <Rate style={{marginLeft:40}} value={item.star} />
+          </span>
+      )}
+  />
+    )}
+  />
+                    {/* {commentsData.length > 0 &&
                         commentsData.map(item=>{
                             return (
                                 <Comment
                                     author={<a>{item.user__user_name}</a>}
                                     avatar={(
                                     <Avatar
-                                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                                        alt="Han Solo"
+                                        src={`https://www.icode121.com/${item.user__user_avatar}`}
+                                        alt="头像"
                                     />
                                     )}
                                     content={(
                                     <p>{item.comment}</p>
                                     )}
                                     datetime={(
-                                        <span>{moment(item.create_time).format('YYYY-MM-DD HH:mm:ss')}</span>
+                                        <span>
+                                          <span>{moment(item.create_time).format('YYYY-MM-DD HH:mm:ss')}</span>
+                                          <Rate style={{marginLeft:40}} value={item.star} />
+                                        </span>
                                     )}
                                 />
                             )
                         })
-                    }
+                    } */}
+                    
                     <Comment
                     avatar={(
                         <Avatar
@@ -351,14 +409,19 @@ class CourseDetail extends PureComponent {
                         />
                     )}
                     content={(
-                        <Editor
+                        <div>
+                          <Rate onChange={this.changeStar} />
+                          <Editor
                         onChange={this.handleChange}
                         onSubmit={this.handleSubmit}
                         submitting={submitting}
                         value={value}
                         />
+                        </div>
+                        
                     )}
                     />
+                   
                 </div>
             </Card>
         </PageHeaderWrapper>

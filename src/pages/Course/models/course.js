@@ -1,4 +1,5 @@
 import { queryCourseList ,queryCourseComments,addCourseComments,queryCourseListDetail,queryCourseContent,queryCourseLike,queryCourseFavorite} from '@/services/course';
+import { message } from 'antd';
 
 export default {
   namespace: 'course',
@@ -62,6 +63,11 @@ export default {
     // 评论
     *comment({ payload }, { call, put }) {
         const response = yield call(addCourseComments, payload);
+        if(response.status == 'ok'){
+          message.success(response.msg)
+        }else{
+          message.error(response.msg)
+        }
         yield put({
           type: 'addComments',
           payload: response,
